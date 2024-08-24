@@ -6,9 +6,9 @@ export default function Header({
 }) {
   return (
     <>
-      <h1 className={styles.header}>
+      <header className={styles.header}>
         <p>{text}</p>
-      </h1>
+      </header>
     </>
   );
 }
