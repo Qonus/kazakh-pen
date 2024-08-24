@@ -1,14 +1,11 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import Button from "@/components/Button/Button";
+import App from "@/components/App/App";
 
 export default function Home() {
   return (
-    <>
-      <Button text="Hello World!" header="Qonus" />
-      <Button text="Hello World!" header="Qonus" />
-      <Button text="Hello World!" header="Qonus" />
-      <Button text="Hello World!" header="Qonus" />
-    </>
+  <>
+  <App/>
+  </>
   );
 }
