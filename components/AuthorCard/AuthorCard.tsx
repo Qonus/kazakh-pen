@@ -1,23 +1,23 @@
 import styles from "./AuthorCard.module.scss";
 export default function AuthorCard({
-  firstName,
-  lastName,
-  birthDate,
-  deathDate,
+  first_name,
+  last_name,
+  birth_date = "",
+  death_date = "",
 }: {
-  firstName: string;
-  lastName: string;
-  birthDate: number;
-  deathDate: number;
+  first_name: string;
+  last_name: string;
+  birth_date?: string;
+  death_date?: string;
 }) {
   return (
     <>
-      <div className={styles.card}>
+      <div className={styles.author_card}>
         <p>
-          {firstName} {lastName}
+          {first_name} {last_name}
         </p>
         <b>
-          {birthDate}-{deathDate}
+          {birth_date}-{death_date}
         </b>
       </div>
     </>
