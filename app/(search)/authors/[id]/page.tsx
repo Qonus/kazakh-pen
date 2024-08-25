@@ -26,8 +26,9 @@ export default function AuthorPage({ params }: any) {
         <div className={styles.author_page__relations}>
           <h1 className={styles.h1}>Related Articles</h1>
           <div className={styles.author_page__relations__related_pages}>
-            <ArticleCard topic = "Биография"/> 
-            <ArticleCard topic = ""/>
+            <ArticleCard topic = "Биография" type="biography"/> 
+            <ArticleCard/>
+            <ArticleCard topic = "Восемь7"/>
           </div>
         </div>
       </div>
