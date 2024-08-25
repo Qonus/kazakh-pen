@@ -1,0 +1,26 @@
+.rounded{
+    
+}
+
+.user_img{
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.author_page{
+    margin-top: 50px;
+    &_wrapper{
+        width: $wrapper-width;
+        margin: 0 auto;
+        display: flex;
+    }
+
+    &__info{
+        display: flex;
+        gap: 30px;
+    }
+
+    &__related_pages{
+
+    }
+}
