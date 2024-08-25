@@ -14,7 +14,7 @@ export default function ArticleCard({
   return (
     <>
       <div className={styles.card} id={cardId}>
-        <div className={styles.card__inner_text}>
+        <div className={styles.card__inner_text} id={cardId}>
           {topic}
         </div>
       </div>
