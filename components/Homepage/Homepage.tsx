@@ -14,31 +14,42 @@ export default function Homepage() {
         <div className={styles.main_section_wrapper}>
           <div className={styles.main_section__content_left}>
             <Header text="Халуми" />
-            <Standart_text text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget ligula ante. Morbi placerat sapien eget diam porta consectetur. Donec vitae felis et odio feugiat vehicula. Pellentesque consectetur ligula eget libero bibendum imperdiet eu id erat. Aenean semper est ipsum, sed venenatis velit sodales sed. Nunc mattis, erat sit amet vulputate tristique, augue est mollis mauris, in cursus nibh purus eget nunc. Sed et laoreet lacus, quis rhoncus mi. " />
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+              eget ligula ante. Morbi placerat sapien eget diam porta
+              consectetur. Donec vitae felis et odio feugiat vehicula.
+              Pellentesque consectetur ligula eget libero bibendum imperdiet eu
+              id erat. Aenean semper est ipsum, sed venenatis velit sodales sed.
+              Nunc mattis, erat sit amet vulputate tristique, augue est mollis
+              mauris, in cursus nibh purus eget nunc. Sed et laoreet lacus, quis
+              rhoncus mi.
+            </p>
           </div>
           <div className={styles.main_section__content_right}>
-            <Link href ="/test" >
-            <Button
-              text="Поесть халуми"
-             header="Халуми это гуд"
-            /> </Link>
-            
-            <Link href ="/test" >
-            <Button
-              text="Поесть халуми"
-             header="Халуми это гуд"
-            /> </Link>
+            <Link className="button" href="/test">
+              Поесть халуми
+            </Link>
+
+            <Link className="button" href="/test">
+              Поесть халуми
+            </Link>
           </div>
         </div>
       </div>
-      
+
       <div className={styles.secondary_section}>
         <div className={styles.secondary_section_wrapper}>
-        <Standart_text text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget ligula ante. Morbi placerat sapien eget diam porta consectetur. Donec vitae felis et odio feugiat vehicula. Pellentesque consectetur ligula eget libero bibendum imperdiet eu id erat. Aenean semper est ipsum, sed venenatis velit sodales sed. Nunc mattis, erat sit amet vulputate tristique, augue est mollis mauris, in cursus nibh purus eget nunc. Sed et laoreet lacus, quis rhoncus mi. " />
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget
+            ligula ante. Morbi placerat sapien eget diam porta consectetur.
+            Donec vitae felis et odio feugiat vehicula. Pellentesque consectetur
+            ligula eget libero bibendum imperdiet eu id erat. Aenean semper est
+            ipsum, sed venenatis velit sodales sed. Nunc mattis, erat sit amet
+            vulputate tristique, augue est mollis mauris, in cursus nibh purus
+            eget nunc. Sed et laoreet lacus, quis rhoncus mi.
+          </p>
         </div>
       </div>
-      
     </div>
-    
   );
 }
