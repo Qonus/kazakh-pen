@@ -1,18 +1,29 @@
 "use client";
-import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 import styles from "./SearchBar.module.scss";
 
-export default function SearchBar() {
-  const searchParams = useSearchParams();
-  const search = searchParams.get("query");
-  console.log(search);
+interface SearchBarProps {
+  onSearch: (query: string) => void;
+}
+
+export default function SearchBar({ onSearch }: SearchBarProps) {
+  const [input, setInput] = useState("");
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = event.target.value;
+    setInput(newValue);
+    onSearch(newValue);
+  };
 
   return (
-    <>
-      <form action="" method="get">
-        <input className={styles.searchBar} name="query" placeholder="Поиск" />
-        <input type="submit" value="Поиск" />
-      </form>
-    </>
+    <form>
+      <input
+        className={styles.searchBar}
+        value={input}
+        onChange={handleChange}
+        placeholder="Поиск"
+        autoComplete="off"
+      />
+    </form>
   );
 }

@@ -1,6 +1,8 @@
-import { GetServerSideProps } from "next";
+"use client";
+import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
 import SearchBar from "@/components/SearchBar/SearchBar";
+import AuthorCard from "@/components/AuthorCard/AuthorCard";
 
 interface User {
   user_id: number;
@@ -16,70 +18,68 @@ interface User {
   updated_at: string;
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const query = context.query.query as string | null;
-
-  let users: User[] = [];
+async function fetchUsers(query?: string): Promise<User[]> {
+  let fetchedData: User[] = [];
 
   try {
+    const { data: users, error: userError } = await supabase
+      .from("users")
+      .select("*");
+
+    if (userError) throw userError;
+
     if (query) {
-      const { data, error } = await supabase
-        .from("users")
-        .select("*")
-        .ilike("first_name", `%${query}%`)
-        .or(`last_name.ilike.%${query}%`)
-        .order("first_name", { ascending: true });
-
-      if (error) throw error;
-
-      users = data || [];
+      fetchedData =
+        users?.filter(
+          (user) =>
+            user.first_name.toLowerCase().includes(query.toLowerCase()) ||
+            user.last_name.toLowerCase().includes(query.toLowerCase())
+        ) || [];
     } else {
-      const { data, error } = await supabase
-        .from("users")
-        .select("*")
-        .order("first_name", { ascending: true });
-
-      if (error) throw error;
-
-      users = data || [];
+      fetchedData = users || [];
     }
   } catch (error) {
     console.error("Error fetching data:", error);
   }
 
-  return {
-    props: {
-      users,
-      query,
-    },
-  };
-};
+  return fetchedData;
+}
 
 export default function AuthorsPage({
-  users,
-  query,
+  searchParams,
 }: {
-  users: User[];
-  query: string | null;
+  searchParams: { query?: string };
 }) {
+  const [users, setUsers] = useState<User[]>([]);
+  const [query, setQuery] = useState(searchParams.query || "");
+
+  useEffect(() => {
+    const fetchInitialData = async () => {
+      const initialUsers = await fetchUsers(query);
+      setUsers(initialUsers);
+    };
+
+    fetchInitialData();
+  }, [query]);
+
   return (
-    <>
-      <SearchBar />
+    <div>
+      <SearchBar onSearch={(newQuery) => setQuery(newQuery)} />
       <div>
         {users.length ? (
           <ul>
             {users.map((user) => (
-              <li key={user.user_id}>
-                {user.first_name} {user.last_name}
-              </li>
+              <AuthorCard
+                key={user.user_id}
+                first_name={user.first_name}
+                last_name={user.last_name}
+              ></AuthorCard>
             ))}
           </ul>
         ) : (
-          <p>
-            {query ? `No results found for "${query}".` : "No results found."}
-          </p>
+          <p>No results found.</p>
         )}
       </div>
-    </>
+    </div>
   );
 }
