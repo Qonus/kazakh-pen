@@ -23,9 +23,12 @@ export default function AuthorPage({ params }: any) {
             <p>Гигатекст для гигаопльзователя</p>
           </div>
         </div>
-        <div className={styles.author_page__related_pages}>
+        <div className={styles.author_page__relations}>
           <h1 className={styles.h1}>Related Articles</h1>
-          <ArticleCard topic = "Текстище"/>
+          <div className={styles.author_page__relations__related_pages}>
+            <ArticleCard topic = "Биография"/> 
+            <ArticleCard topic = ""/>
+          </div>
         </div>
       </div>
     </div>

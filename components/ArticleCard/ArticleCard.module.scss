@@ -1,40 +1,24 @@
 .card{
     margin-top: 20px;
-    background-image: "/Abai_Kunanbaev.jpg";
+    background-image: "@/public/Abai_Kunanbaev.jpg";
+    border: 2px solid #999;
     width: 200px;
     height: 250px;
-    border: 2px solid #999999;
     display:flex;
     justify-content: center;
     align-items: end;
 
-    &_biography{
-        margin-top: 20px;
-        background-image: "@/public/Abai_Kunanbaev.jpg";
-        border: 2px solid gold;
-        width: 200px;
-        height: 250px;
-        display:flex;
-        justify-content: center;
-        align-items: end;
-
-        &__inner_text{
-            width: 200px;
-            height: 50px;
-            border: 1px solid gold;
-            display:flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-    }
     &__inner_text{
         width: 200px;
         height: 50px;
-        border: 1px solid black;
+        border: 1px solid #999;
         display:flex;
         justify-content: center;
         align-items: center;
-        text-align: center;
+        text-align: center;    
     }
+}
+
+#biography{
+    border:2px solid gold;
 }
