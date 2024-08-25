@@ -10,9 +10,9 @@ export default function Navbar() {
             <h3>Header</h3>
           </div>
           <div className={styles.navbar__nav}>
-            <Link href="/search">Search</Link>
-            <Link href="/">Link</Link>
-            <Link href="/">Link</Link>
+            <Link href="/authors">Authors</Link>
+            <Link href="/articles">Articles</Link>
+            <Link href="/">home</Link>
           </div>
         </div>
       </div>
