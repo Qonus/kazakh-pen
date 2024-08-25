@@ -10,7 +10,7 @@ export default function Navbar() {
             <h3>Header</h3>
           </div>
           <div className={styles.navbar__nav}>
-            <Link href="/">Link</Link>
+            <Link href="/search">Search</Link>
             <Link href="/">Link</Link>
             <Link href="/">Link</Link>
           </div>
