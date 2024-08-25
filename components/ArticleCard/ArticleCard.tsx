@@ -7,7 +7,9 @@ export default function ArticleCard({
   return (
     <>
       <div className={styles.card_biography}>
-        БИОГРАФИЧЕСКИЙ ТЕКСТ ЕПТЫГЫДЫК
+        <div className={styles.card_biography__inner_text}>
+          {topic}
+        </div>
       </div>
     </>
   );
