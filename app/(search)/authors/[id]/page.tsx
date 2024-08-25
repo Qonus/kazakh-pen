@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.scss";
+import ArticleCard from "@/components/ArticleCard/ArticleCard"
 
 export default function AuthorPage({ params }: any) {
   return (
@@ -17,7 +18,13 @@ export default function AuthorPage({ params }: any) {
           <div>
             <h1>Абай Құнанбаев</h1>
             <p>Гигатекст для гигаопльзователя</p>
+            <p>Гигатекст для гигаопльзователя</p>
+            <p>Гигатекст для гигаопльзователя</p>
+            <p>Гигатекст для гигаопльзователя</p>
           </div>
+        </div>
+        <div className={styles.author_page__related_pages}>
+          <ArticleCard topic = "абуба"/>
         </div>
       </div>
     </div>

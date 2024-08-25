@@ -7,7 +7,7 @@ export default function Navbar() {
       <div className={styles.navbar}>
         <div className={styles.navbar_wrapper}>
           <div className={styles.navbar__header}>
-            <h3>Header</h3>
+            <h3>Kazakh Pen</h3>
           </div>
           <div className={styles.navbar__nav}>
             <Link href="/authors">Authors</Link>

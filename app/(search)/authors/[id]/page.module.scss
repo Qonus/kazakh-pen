@@ -9,10 +9,13 @@
 
 .author_page{
     margin-top: 50px;
+    display: flex;
+    
     &_wrapper{
         width: $wrapper-width;
         margin: 0 auto;
         display: flex;
+        flex-direction: column;
     }
 
     &__info{
