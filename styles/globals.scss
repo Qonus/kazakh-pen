@@ -9,8 +9,8 @@
 body {
     max-width: 100vw;
     overflow-x: hidden;
-    background-color: rgb(32, 30, 36);
-    color: white;
+    background-color: $background-color;
+    color: $foreground;
 }
 
 a {
@@ -19,7 +19,7 @@ a {
 }
 
 .button {
-    background-color: orange;
+    background-color: $primary-color;
     padding: 10px;
     margin: 10px;
     border-radius: 10px;
