@@ -1,0 +1,23 @@
+.navbar {
+    height: 70px;
+    width: 100%;
+    background-color: white;
+    color: black;
+    display: flex;
+
+    &_wrapper {
+        width: $wrapper-width;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+
+        & > * {
+            margin: auto 0;
+        }
+    }
+
+    &__nav {
+        display: flex;
+        gap: 20px;
+    }
+}
