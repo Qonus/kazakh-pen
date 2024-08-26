@@ -3,11 +3,13 @@ import { useState } from "react";
 import styles from "./SearchBar.module.scss";
 import Image from "next/image";
 
-interface SearchBarProps {
+export default function SearchBar({
+  onSearch,
+  header,
+}: {
   onSearch: (query: string) => void;
-}
-
-export default function SearchBar({ onSearch }: SearchBarProps) {
+  header?: string;
+}) {
   const [input, setInput] = useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,6 +21,9 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
   return (
     <form className={styles.search_bar}>
       <div className={styles.search_bar_wrapper}>
+        <div className={styles.search_bar__header}>
+          <h1>{header}</h1>
+        </div>
         <div className={styles.search_bar__bar}>
           <Image
             className={styles.search_bar__bar__icon}

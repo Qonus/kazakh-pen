@@ -17,23 +17,19 @@ export default function AuthorCard({
   image?: string;
 }) {
   return (
-    <div className={styles.author_card}>
-      <div className={styles.author_card_wrapper}>
-        <Link href={href} className={styles.author_card__card + " glass"}>
-          <Image
-            className={styles.author_card__card__profile_picture}
-            src={image}
-            width={60}
-            height={60}
-            alt="author image"
-          />
-          <div className={styles.author_card__card__info}>
-            <h4>
-              {first_name} {last_name} | {birth_date} - {death_date}
-            </h4>
-          </div>
-        </Link>
+    <Link href={href} className={styles.author_card + " glass"}>
+      <Image
+        className={styles.author_card__profile_picture}
+        src={image}
+        width={60}
+        height={60}
+        alt="author image"
+      />
+      <div className={styles.author_card__info}>
+        <h4>
+          {first_name} {last_name} | {birth_date} - {death_date}
+        </h4>
       </div>
-    </div>
+    </Link>
   );
 }

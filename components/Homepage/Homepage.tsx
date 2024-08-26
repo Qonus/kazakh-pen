@@ -1,6 +1,5 @@
 "use client";
 import { usePathname } from "next/navigation";
-import Header from "@/components/Header/Header";
 import styles from "./Homepage.module.scss";
 import Link from "next/link";
 
@@ -11,7 +10,7 @@ export default function Homepage() {
       <div className={styles.main_section}>
         <div className={styles.main_section_wrapper}>
           <div className={styles.main_section__content_left}>
-            <Header text="Халуми" />
+            <h1>Халуми</h1>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
               eget ligula ante. Morbi placerat sapien eget diam porta
