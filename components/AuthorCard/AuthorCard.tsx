@@ -1,12 +1,15 @@
 import Image from "next/image";
 import styles from "./AuthorCard.module.scss";
+import Link from "next/link";
 export default function AuthorCard({
+  href,
   first_name,
   last_name,
   birth_date = "",
   death_date = "",
   image = "/profile_picture_placeholder.png",
 }: {
+  href: string;
   first_name: string;
   last_name: string;
   birth_date?: string;
@@ -16,7 +19,7 @@ export default function AuthorCard({
   return (
     <div className={styles.author_card}>
       <div className={styles.author_card_wrapper}>
-        <div className={styles.author_card__card + " glass"}>
+        <Link href={href} className={styles.author_card__card + " glass"}>
           <Image
             className={styles.author_card__card__profile_picture}
             src={image}
@@ -29,7 +32,7 @@ export default function AuthorCard({
               {first_name} {last_name} | {birth_date} - {death_date}
             </h4>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );
