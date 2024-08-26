@@ -65,8 +65,12 @@ export default function AuthorsPage({
                 href={"/authors/" + user.user_id}
                 first_name={user.first_name}
                 last_name={user.last_name}
-                birth_date={user.birth_date}
-                death_date={user.death_date}
+                birth_date={new Date(user.birth_date || "")
+                  .getFullYear()
+                  .toString()}
+                death_date={new Date(user.death_date || "")
+                  .getFullYear()
+                  .toString()}
                 image={user.image || "/profile_picture_placeholder.png"}
               ></AuthorCard>
             ))}

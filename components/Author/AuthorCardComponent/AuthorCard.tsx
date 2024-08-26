@@ -31,9 +31,14 @@ export default function AuthorCard({
         alt="author image"
       />
       <div className={styles.author_card__info}>
-        <h4>
-          {first_name} {last_name} | {birth_date} - {death_date}
-        </h4>
+        <div className={styles.author_card__info_top}>
+          <h4>
+            {first_name} {last_name}
+          </h4>
+          <p>
+            ({birth_date} - {death_date})
+          </p>
+        </div>
         <AuthorNumbers pages={pages} likes={likes} />
       </div>
     </Link>

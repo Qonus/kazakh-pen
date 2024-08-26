@@ -1,20 +1,53 @@
+import User from "@/backend/objects/User";
 import styles from "./page.module.scss";
 import AuthorInfo from "@/components/Author/AuthorInfoComponent/AuthorInfo";
 import AuthorRelations from "@/components/Author/AuthorRelationsComponent/AuthorRelations";
+import { supabase } from "@/lib/supabase";
 
-export default function AuthorPage() {
+async function fetchUserById(user_id: string) {
+  let user: User | null = null;
+
+  try {
+    const { data, error } = await supabase
+      .from("users")
+      .select("*")
+      .eq("user_id", user_id)
+      .single();
+
+    if (error) {
+      console.error("Error fetching user:", error);
+    } else {
+      user = data;
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+
+  return user || null;
+}
+interface AuthorPageProps {
+  params: {
+    id: string;
+  };
+}
+export default async function AuthorPage({ params }: AuthorPageProps) {
+  const { id } = params;
+  let user: User | null = await fetchUserById(id);
+  if (!user) {
+    return <p className={styles.results__message}>User not found.</p>;
+  }
   return (
     <div className={styles.author_page}>
       <div className={styles.author_page_wrapper}>
         <AuthorInfo
-          firstName="Qonys"
-          lastName="Aibat"
+          firstName={user.first_name}
+          lastName={user.last_name}
           pages={0}
           likes={0}
-          birthDate="1845"
-          deathDate="1904"
-          nationality="Kazakh"
-          description="Kазахский поэт, философ, музыкант, народный просветитель, общественный деятель, основоположник казахской письменной литературы и её первый классик, реформатор культуры в духе сближения с европейской культурой на основе культуры просвещённого ислама.Был одним из первых казахских писателей, кто активно использовал прозу в своих произведениях, расширяя жанровые границы казахской литературы. В своих произведениях Абай Кунанбаев выразил глубокие мысли о национальной идентичности, любви к родине, природе и человеческим ценностям.Настоящее имя — Ибрагим, но прозвище Абай (каз. Абай «внимательный», «осторожный»), данное бабушкой Зере, закрепилось за ним на всю жизнь."
+          birthDate={new Date(user.birth_date || "").getFullYear().toString()}
+          deathDate={new Date(user.death_date || "").getFullYear().toString()}
+          nationality={user.nationality || "Казак"}
+          description={user.description || ""}
         />
         <AuthorRelations />
       </div>

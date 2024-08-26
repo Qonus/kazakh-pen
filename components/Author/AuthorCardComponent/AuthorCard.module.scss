@@ -19,16 +19,10 @@
         flex-direction: column;
         gap: 10px;
 
-        &_bottom {
+        &_top {
             display: flex;
             align-items: center;
-            gap: 30px;
-
-            & > * {
-                display: flex;
-                align-items: center;
-                gap: 7px;
-            }
+            gap: 10px;
         }
     }
 }

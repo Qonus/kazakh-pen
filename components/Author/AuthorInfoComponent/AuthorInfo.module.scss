@@ -7,7 +7,7 @@
 
     &__text {
         font-size: 20px;
-        color: rgba(255, 255, 255, 0.6);
+        color: $secondary-foreground-color;
     }
     
     &__ellipsis {
@@ -42,6 +42,7 @@
         display: flex;
         gap: 0px;
         flex-direction: column;
+        justify-content: space-between;
         overflow: hidden;
         text-overflow: clip ellipsis;
 
