@@ -1,7 +1,8 @@
 import Image from "next/image";
 import styles from "./AuthorInfo.module.scss"; 
 
-export default function AuthorInfo({params}:any){
+export default function AuthorInfo({params = {firstName: "Abai", lastName:"Kunanbaev", description:""}}:
+    {params?:{firstName: string, lastName: string, description: string}}){
     return(
     <div className={styles.info}>
         <div>
@@ -13,11 +14,8 @@ export default function AuthorInfo({params}:any){
               className={styles.user_img} />  
               </div>
               <div>
-                <h1>Абай Құнанбаев</h1>
-                <p>Гигатекст для гигаопльзователя</p>
-                <p>Гигатекст для гигаопльзователя</p>
-                <p>Гигатекст для гигаопльзователя</p>
-                <p>Гигатекст для гигаопльзователя</p>
+                <h1>{params.firstName}_{params.lastName}</h1>
+                <p>{params.description}</p>
         </div>
     </div>
     )
