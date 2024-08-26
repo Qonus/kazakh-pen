@@ -1,18 +1,24 @@
 .search_bar {
-    height: 100px;
-    margin-top: 50px;
+    height: 170px;
 
     &_wrapper {
-        width: $wrapper-width;
+        width: calc($wrapper-width * 0.8);
         height: 100%;
         margin: 0 auto;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
+        gap: 20px;
+    }
+
+    &__header {
+        width: 100%;
+        padding-left: 50px;
     }
 
     &__bar {
-        width: 80%;
+        width: 100%;
         background-color: white;
         border-radius: 100px;
         height: 40px;

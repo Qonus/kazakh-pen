@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
 import SearchBar from "@/components/SearchBar/SearchBar";
 import AuthorCard from "@/components/AuthorCard/AuthorCard";
+import styles from "./page.module.scss";
 
 interface User {
   user_id: number;
@@ -64,10 +65,13 @@ export default function AuthorsPage({
 
   return (
     <div>
-      <SearchBar onSearch={(newQuery) => setQuery(newQuery)} />
-      <div>
+      <SearchBar
+        header="Поиск Авторов"
+        onSearch={(newQuery) => setQuery(newQuery)}
+      />
+      <div className={styles.results_wrapper}>
         {users.length ? (
-          <ul>
+          <ul className={styles.results__list}>
             {users.map((user) => (
               <AuthorCard
                 key={user.user_id}
@@ -80,7 +84,7 @@ export default function AuthorsPage({
             ))}
           </ul>
         ) : (
-          <p>No results found.</p>
+          <p className={styles.results__message}>No results found.</p>
         )}
       </div>
     </div>
