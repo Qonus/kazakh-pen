@@ -8,7 +8,8 @@
     gap: 30px;
     align-items: center;
     padding:20px;
-
+    width: 80%;
+    margin: 0 auto;
 
     &__left{
         display: flex;
@@ -20,12 +21,24 @@
     &__right{
         height: 200px;
         display: flex;
-        gap: 10px;
+        gap: 0px;
         flex-direction: column;
+        overflow: hidden;
+        text-overflow: clip ellipsis;
     }
 }
 
-.dates{
-    font-size: 10px;
-    color: #666;
+.secondary_text{
+    font-size: large;
+    color: #999;
+}
+
+.ellipsis{
+    font-size: large;
+    width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
