@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./ArticleCard.module.scss";
+import Link from "next/link";
 
 export default function ArticleCard({
   href,
@@ -11,7 +12,7 @@ export default function ArticleCard({
   image?: string;
 }) {
   return (
-    <div className={styles.article_card + " glass"}>
+    <Link href={href} className={styles.article_card + " glass"}>
       <Image
         className={styles.article_card__image}
         src={image}
@@ -22,6 +23,6 @@ export default function ArticleCard({
       <div className={styles.article_card__title}>
         <p>{title}</p>
       </div>
-    </div>
+    </Link>
   );
 }
