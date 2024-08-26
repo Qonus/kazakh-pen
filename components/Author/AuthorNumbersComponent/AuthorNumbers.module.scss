@@ -1,0 +1,11 @@
+.author_numbers {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    & > * {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+    }
+}

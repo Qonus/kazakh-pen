@@ -1,9 +1,14 @@
+"use client";
 import Image from "next/image";
 import styles from "./AuthorInfo.module.scss";
+import { useState } from "react";
+import AuthorNumbers from "../AuthorNumbersComponent/AuthorNumbers";
 
 export default function AuthorInfo({
   firstName = "Abai",
   lastName = "Kunanbaev",
+  pages = 0,
+  likes = 0,
   birthDate = "1999",
   deathDate = "2000",
   nationality = "Казак",
@@ -11,11 +16,19 @@ export default function AuthorInfo({
 }: {
   firstName: string;
   lastName: string;
+  pages: number;
+  likes: number;
   birthDate: string;
   deathDate: string;
   nationality: string;
   description: string;
 }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const on_click_read_more = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   return (
     <div className={styles.author_info + " glass"}>
       <div className={styles.author_info__left}>
@@ -35,15 +48,28 @@ export default function AuthorInfo({
         <h1>
           {firstName} {lastName}
         </h1>
-
+        <AuthorNumbers pages={pages} likes={likes} />
         <p
           className={
-            styles.author_info__text + " " + styles.author_info__ellipsis
+            styles.author_info__text +
+            " " +
+            (isExpanded
+              ? styles.author_info__expanded
+              : styles.author_info__ellipsis)
           }
         >
           {description}
         </p>
-        <a href=""></a>
+        <button
+          className={
+            styles.author_info__text +
+            " " +
+            styles.author_info__right__read_more_button
+          }
+          onClick={on_click_read_more}
+        >
+          {isExpanded ? "Свернуть" : "Читать дальше"}
+        </button>
       </div>
     </div>
   );

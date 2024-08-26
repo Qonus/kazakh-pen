@@ -1,16 +1,9 @@
-.user_img{
-    object-fit: cover;
-    border-radius: 50%;
-}
-
 .author_page{
-    margin-top: 50px;
-    display: flex;
-   
     
     &_wrapper{
         width: $wrapper-width;
         margin: 0 auto;
+        margin-top: 70px;
         display: flex;
         flex-direction: column;
     }

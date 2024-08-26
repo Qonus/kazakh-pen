@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./AuthorCard.module.scss";
 import Link from "next/link";
+import AuthorNumbers from "../AuthorNumbersComponent/AuthorNumbers";
 export default function AuthorCard({
   href,
   first_name,
@@ -33,23 +34,7 @@ export default function AuthorCard({
         <h4>
           {first_name} {last_name} | {birth_date} - {death_date}
         </h4>
-        <div className={styles.author_card__info_bottom}>
-          {/* <div>
-            <Image
-              className="primary_color_svg"
-              src="/heart.svg"
-              width={15}
-              height={15}
-              alt="like icon"
-            />
-            <p>{likes}</p>
-          </div> */}
-
-          <div>
-            <p>{pages}</p>
-            <p>страниц</p>
-          </div>
-        </div>
+        <AuthorNumbers pages={pages} likes={likes} />
       </div>
     </Link>
   );

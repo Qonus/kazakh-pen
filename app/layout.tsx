@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.scss";
-import Navbar from "@/components/Navbar/Navbar";
-import Footer from "@/components/Footer/Footer";
+import Navbar from "@/components/NavbarComponent/Navbar";
+import Footer from "@/components/FooterComponent/Footer";
 
 export const metadata: Metadata = {
   title: "Kazakh Pen",

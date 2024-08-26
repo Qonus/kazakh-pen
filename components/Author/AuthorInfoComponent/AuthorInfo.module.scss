@@ -1,0 +1,60 @@
+.author_info{
+    display: flex;
+    gap: 30px;
+    padding:20px;
+    width: 80%;
+    margin: 0 auto;
+
+    &__text {
+        font-size: 20px;
+        color: rgba(255, 255, 255, 0.6);
+    }
+    
+    &__ellipsis {
+        width: 100%;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__expanded {
+        display: block;
+        -webkit-line-clamp: unset; // Removes the line clamp restriction
+        overflow: visible;
+    }
+
+
+    &__left{
+        display: flex;
+        gap: 0px;
+        flex-direction: column;
+        align-items: center;
+
+        &__image {
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    }
+
+    &__right{
+        display: flex;
+        gap: 0px;
+        flex-direction: column;
+        overflow: hidden;
+        text-overflow: clip ellipsis;
+
+        &__numbers {
+            
+        }
+
+        &__read_more_button {
+            background-color: transparent;
+            border: none;
+            width: fit-content;
+            color: orange;
+            cursor: pointer;
+        }
+    }
+}

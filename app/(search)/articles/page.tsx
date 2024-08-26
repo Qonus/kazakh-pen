@@ -1,9 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
-import SearchBar from "@/components/SearchBar/SearchBar";
+import SearchBar from "@/components/SearchBarComponent/SearchBar";
 import styles from "./page.module.scss";
-import ArticleCard from "@/components/ArticleCard/ArticleCard";
+import ArticleCard from "@/components/ArticleCardComponent/ArticleCard";
 import Article from "@/backend/objects/Article";
 
 async function fetchArticles(query?: string): Promise<Article[]> {

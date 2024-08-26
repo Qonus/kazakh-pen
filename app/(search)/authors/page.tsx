@@ -1,8 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
-import SearchBar from "@/components/SearchBar/SearchBar";
-import AuthorCard from "@/components/AuthorCard/AuthorCard";
+import SearchBar from "@/components/SearchBarComponent/SearchBar";
+import AuthorCard from "@/components/Author/AuthorCardComponent/AuthorCard";
 import styles from "./page.module.scss";
 import User from "@/backend/objects/User";
 
