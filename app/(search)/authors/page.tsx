@@ -4,20 +4,7 @@ import { supabase } from "@/lib/supabase";
 import SearchBar from "@/components/SearchBar/SearchBar";
 import AuthorCard from "@/components/AuthorCard/AuthorCard";
 import styles from "./page.module.scss";
-
-interface User {
-  user_id: number;
-  type: "historical_figure" | "simple_user";
-  first_name: string;
-  last_name: string;
-  description?: string;
-  birth_date?: string;
-  death_date?: string;
-  nationality?: string;
-  image?: string;
-  created_at: string;
-  updated_at: string;
-}
+import User from "@/backend/objects/User";
 
 async function fetchUsers(query?: string): Promise<User[]> {
   let fetchedData: User[] = [];
@@ -80,6 +67,7 @@ export default function AuthorsPage({
                 last_name={user.last_name}
                 birth_date={user.birth_date}
                 death_date={user.death_date}
+                image={user.image || "/profile_picture_placeholder.png"}
               ></AuthorCard>
             ))}
           </ul>

@@ -4,6 +4,7 @@ import { supabase } from "@/lib/supabase";
 import SearchBar from "@/components/SearchBar/SearchBar";
 import AuthorCard from "@/components/AuthorCard/AuthorCard";
 import styles from "./page.module.scss";
+import ArticleCard from "@/components/ArticleCard/ArticleCard";
 
 interface User {
   user_id: number;
@@ -73,14 +74,11 @@ export default function AuthorsPage({
         {users.length ? (
           <ul className={styles.results__list}>
             {users.map((user) => (
-              <AuthorCard
+              <ArticleCard
                 key={user.user_id}
-                href={"/authors/" + user.user_id}
-                first_name={user.first_name}
-                last_name={user.last_name}
-                birth_date={user.birth_date}
-                death_date={user.death_date}
-              ></AuthorCard>
+                href={"/articles/" + user.user_id}
+                title={user.first_name + " " + user.last_name}
+              ></ArticleCard>
             ))}
           </ul>
         ) : (

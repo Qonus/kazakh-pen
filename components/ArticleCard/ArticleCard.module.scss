@@ -1,17 +1,25 @@
-.card{
-    margin-top: 20px;
-    background-image: "/Abai_Kunanbaev.jpg";
+.article_card{
     border: 2px solid #999;
-    width: 200px;
-    height: 250px;
-    display:flex;
+    width: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
     justify-content: center;
     align-items: end;
 
-    &__inner_text{
-        width: 200px;
-        height: 50px;
-        border: 1px solid #999;
+    &__image {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0%;
+        bottom: 0%;
+        z-index: 0;
+    }
+
+    &__title{
+        width: 100%;
+        height: 20%;
+        border-top: 1px solid #999;
+        background-color: rgba(0, 0, 0, 0.2);
         display:flex;
         justify-content: center;
         align-items: center;
