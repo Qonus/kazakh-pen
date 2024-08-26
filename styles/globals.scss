@@ -33,3 +33,7 @@ a {
     border-radius: 10px;
     box-shadow: 0px 0px 30px 5px rgba(0, 0, 0, 0.2);
 }
+
+.primary_color_svg {
+    filter: invert(83%) sepia(65%) saturate(4248%) hue-rotate(335deg) brightness(100%) contrast(99%);
+}

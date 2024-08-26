@@ -1,0 +1,19 @@
+.results {
+
+    &_wrapper {
+        width: $wrapper-width;
+        height: 100%;
+        margin: 0 auto;
+    }
+    
+    &__list {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    &__message {
+        text-align: center;
+    }
+}
