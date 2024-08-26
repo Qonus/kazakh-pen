@@ -1,0 +1,21 @@
+.article{
+    margin-top: 50px;
+    display: flex;
+    
+    &_wrapper{
+        width: $wrapper-width;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.p{
+    margin-top: 20px;
+}

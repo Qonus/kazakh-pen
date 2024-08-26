@@ -1,8 +1,8 @@
 import Image from "next/image";
 import styles from "./AuthorInfo.module.scss"; 
 
-export default function AuthorInfo({params = {firstName: "Abai", lastName:"Kunanbaev", description:""}}:
-    {params?:{firstName: string, lastName: string, description: string}}){
+export default function AuthorInfo({params = {firstName: "Abai", lastName:"Kunanbaev", birthDate:"1999", deathDate:"2000", description:""}}:
+    {params?:{firstName: string, lastName: string, birthDate: string, deathDate: string, description: string}}){
     return(
     <div className={styles.info}>
         <div>
@@ -15,6 +15,7 @@ export default function AuthorInfo({params = {firstName: "Abai", lastName:"Kunan
               </div>
               <div>
                 <h1>{params.firstName}_{params.lastName}</h1>
+                <p className={styles.dates}>{params.birthDate}-{params.deathDate}</p>
                 <p>{params.description}</p>
         </div>
     </div>
