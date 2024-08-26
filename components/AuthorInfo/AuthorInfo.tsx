@@ -20,17 +20,17 @@ export default function AuthorInfo({
         <Image
           src="/Abai_Kunanbaev.jpg"
           alt="Picture of the author"
-          width={150}
-          height={150}
+          width={200}
+          height={200}
           className={styles.user_img}
         />
         <p className={styles.dates}>
-          {birthDate}-{deathDate}
+          {birthDate} - {deathDate}
         </p>
       </div>
       <div className={styles.info__right}>
         <h1>
-          {firstName}_{lastName}
+          {firstName} {lastName}
         </h1>
 
         <p>{description}</p>
