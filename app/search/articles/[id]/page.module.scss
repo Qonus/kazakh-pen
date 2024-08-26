@@ -3,7 +3,7 @@
     border-radius: 50%;
 }
 
-.author_page{
+.article_page{
     margin-top: 50px;
     display: flex;
     
@@ -15,6 +15,9 @@
     }
 }
 
-.h1{
-    margin-top: 20px;
+
+.title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
