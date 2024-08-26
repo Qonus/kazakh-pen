@@ -6,9 +6,26 @@
 .info{
     display: flex;
     gap: 30px;
+    align-items: center;
+    padding:20px;
+
+
+    &__left{
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__right{
+        height: 200px;
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+    }
 }
 
 .dates{
-    font-size: 9px;
+    font-size: 10px;
     color: #666;
 }

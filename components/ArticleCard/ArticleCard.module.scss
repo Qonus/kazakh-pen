@@ -1,6 +1,6 @@
 .card{
     margin-top: 20px;
-    background-image: "@/public/Abai_Kunanbaev.jpg";
+    background-image: "/Abai_Kunanbaev.jpg";
     border: 2px solid #999;
     width: 200px;
     height: 250px;
@@ -17,8 +17,4 @@
         align-items: center;
         text-align: center;    
     }
-}
-
-#biography{
-    border:2px solid gold;
 }
