@@ -3,14 +3,14 @@ import ArticleCard from "../../ArticleCardComponent/ArticleCard";
 import Link from "next/link";
 
 //я не знаю как передавать сюда динамическое количество карточек и работ если честно
-export default function AuthorRelations({ params }: any) {
+export default function AuthorRelatedArticles({ params }: any) {
   return (
     <>
       <div className={styles.relations}>
         <h1 className={styles.h1}>Related Articles</h1>
         <div className={styles.relations__related_pages}>
-          <ArticleCard title="Биография" href="/search/authors/1" />
-          <ArticleCard title="Восемь7" href="/search/authors/1" />
+          <ArticleCard title="Биография" href="/articles/1" />
+          <ArticleCard title="Восемь7" href="/articles/1" />
         </div>
         <h1 className={styles.h1}>Works</h1>
         <div className={styles.relations__works}>

@@ -6,5 +6,20 @@
         margin-top: 70px;
         display: flex;
         flex-direction: column;
+
+        hr {
+            margin-top: 60px;
+            margin-bottom: 30px;
+        }
+        h3 {
+            text-align: center;
+        }
+    }
+
+    &__related_articles {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
     }
 }

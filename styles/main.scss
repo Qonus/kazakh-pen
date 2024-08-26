@@ -1,7 +1,9 @@
-$wrapper-width: clamp(500px, 80%, 900px);
+$min-wrapper-width: 500px;
+$wrapper-width: clamp($min-wrapper-width, 80%, 900px);
 
 // COLORS
 $primary-color: #F3AF2B;
-$foreground-color: white;
-$secondary-foreground-color: rgba(255, 255, 255, 0.7);
+$foreground-color-1: white;
+$foreground-color-2: rgba(255, 255, 255, 0.7);
+$foreground-color-3: rgba(255, 255, 255, 0.5);
 $background-color: #151D23;

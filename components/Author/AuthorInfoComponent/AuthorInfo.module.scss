@@ -2,12 +2,12 @@
     display: flex;
     gap: 30px;
     padding:20px;
-    width: 80%;
+    width: max(80%, $min-wrapper-width);
     margin: 0 auto;
 
     &__text {
         font-size: 20px;
-        color: $secondary-foreground-color;
+        color: $foreground-color-2;
     }
     
     &__ellipsis {
@@ -40,9 +40,8 @@
 
     &__right{
         display: flex;
-        gap: 0px;
+        gap: 15px;
         flex-direction: column;
-        justify-content: space-between;
         overflow: hidden;
         text-overflow: clip ellipsis;
 
