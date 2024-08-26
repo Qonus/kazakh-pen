@@ -1,9 +1,10 @@
 .navbar {
     height: 70px;
     width: 100%;
-    background-color: white;
-    color: black;
     display: flex;
+    background-color: rgba(137, 173, 214, 0.1);
+    box-shadow: 0px 0px 50px 10px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.479);
     position: fixed;
     top: 0%;
     left: 0%;
@@ -17,12 +18,39 @@
 
         & > * {
             margin: auto 0;
+            & > * {
+                margin: auto 0;
+            }
+        }
+    }
+
+    &__header {
+        display: flex;
+        gap: 10px;
+        font-size: 20px;
+
+        &__logo {
+            filter: invert(99%) sepia(67%) saturate(88%) hue-rotate(240deg) brightness(116%) contrast(100%);
         }
     }
 
     &__nav {
         display: flex;
-        gap: 10px;
+        height: 100%;
+    }
+    & a {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 min(15px, 1.5vw);
+        background-color: transparent;
+        transition: background-color;
+        transition-duration: 0.5s;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
     }
 }
 
