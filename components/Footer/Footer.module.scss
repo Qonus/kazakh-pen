@@ -1,0 +1,33 @@
+.footer {
+    position: fixed;
+    bottom: 0%;
+    left: 0%;
+    background: linear-gradient(rgba(0, 0, 0, 0), $background-color calc(100% - 60px));
+    height: 300px;
+    width: 100%;
+
+    &_wrapper {
+        width: $wrapper-width;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        color: rgba(255, 255, 255, 0.5);
+
+        hr {
+            width: 100%;
+            height: 1px;
+        }
+
+        h5 {
+            margin: 30px 50px;
+            margin-top: 10px;
+            font-size: 17px;
+        }
+    }
+}
+
+.fake_footer {
+    height: 300px;
+}
