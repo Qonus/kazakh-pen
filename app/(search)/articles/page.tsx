@@ -3,28 +3,24 @@ import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
 import SearchBar from "@/components/SearchBar/SearchBar";
 import styles from "./page.module.scss";
-import User from "@/backend/objects/User";
 import ArticleCard from "@/components/ArticleCard/ArticleCard";
+import Article from "@/backend/objects/Article";
 
-async function fetchUsers(query?: string): Promise<User[]> {
-  let fetchedData: User[] = [];
+async function fetchArticles(query?: string): Promise<Article[]> {
+  let fetchedData: Article[] = [];
 
   try {
-    const { data: users, error: userError } = await supabase
-      .from("users")
-      .select("*");
+    const { data, error } = await supabase.from("articles").select("*");
 
-    if (userError) throw userError;
+    if (error) throw error;
 
     if (query) {
       fetchedData =
-        users?.filter(
-          (user) =>
-            user.first_name.toLowerCase().includes(query.toLowerCase()) ||
-            user.last_name.toLowerCase().includes(query.toLowerCase())
+        data?.filter((article) =>
+          article.title.toLowerCase().includes(query.toLowerCase())
         ) || [];
     } else {
-      fetchedData = users || [];
+      fetchedData = data || [];
     }
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -33,18 +29,18 @@ async function fetchUsers(query?: string): Promise<User[]> {
   return fetchedData;
 }
 
-export default function AuthorsPage({
+export default function ArticlesPage({
   searchParams,
 }: {
   searchParams: { query?: string };
 }) {
-  const [users, setUsers] = useState<User[]>([]);
+  const [articles, setArticles] = useState<Article[]>([]);
   const [query, setQuery] = useState(searchParams.query || "");
 
   useEffect(() => {
     const fetchInitialData = async () => {
-      const initialUsers = await fetchUsers(query);
-      setUsers(initialUsers);
+      const response = await fetchArticles(query);
+      setArticles(response);
     };
 
     fetchInitialData();
@@ -57,14 +53,14 @@ export default function AuthorsPage({
         onSearch={(newQuery) => setQuery(newQuery)}
       />
       <div className={styles.results_wrapper}>
-        {users.length ? (
+        {articles.length ? (
           <ul className={styles.results__list}>
-            {users.map((user) => (
+            {articles.map((article) => (
               <ArticleCard
-                key={user.user_id}
-                href={"/articles/" + user.user_id}
-                title={user.first_name + " " + user.last_name}
-                image={user.image || "/default_image.jpg"}
+                key={article.article_id}
+                href={"/articles/" + article.article_id}
+                title={article.title}
+                image={article.image || "/default_image.jpg"}
               ></ArticleCard>
             ))}
           </ul>
