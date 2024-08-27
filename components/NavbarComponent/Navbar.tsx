@@ -19,13 +19,13 @@ export default function Navbar() {
           </Link>
           <div className={styles.navbar__nav}>
             <Link href="/authors">
-              <p>авторы</p>
+              <p>Авторы</p>
             </Link>
             <Link href="/articles">
-              <p>произведения</p>
+              <p>Статьи</p>
             </Link>
             <Link href="/">
-              <p>войти</p>
+              <p>Главная</p>
             </Link>
           </div>
         </div>

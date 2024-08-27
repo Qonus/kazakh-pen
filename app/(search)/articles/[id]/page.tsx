@@ -39,7 +39,7 @@ export default async function ArticlePage({ params }: any) {
       <div className={styles.article_page_wrapper}>
         <Article
           title={article.title}
-          publish_date={article.published_date || "не опубликовано"}
+          publish_date={article.created_at || "не опубликовано"}
           last_changed={article.updated_at || ""}
           image={article.image || "/default_image.jpg"}
           content={article.content}
