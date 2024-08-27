@@ -6,7 +6,7 @@ async function fetchArticles(query?: string): Promise<ArticleObject[]> {
   let fetchedData: ArticleObject[] = [];
 
   try {
-    const { data, error } = await supabase.from("articles").select("*");
+    const { data, error } = await supabase.rpc("get_articles");
 
     if (error) throw error;
 

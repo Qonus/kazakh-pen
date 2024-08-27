@@ -1,6 +1,7 @@
 import styles from "./page.module.scss";
 import AuthorInfo from "@/components/Author/AuthorInfoComponent/AuthorInfo";
 import ArticleCard from "@/components/Article/ArticleCardComponent/ArticleCard";
+import ArticleCardsList from "@/components/Article/ArticleCardsListComponent/ArticleCardsList";
 
 async function fetchAuthorData(id: string) {
   const response = await fetch(`${process.env.API_URL}/api/users/${id}`, {
@@ -40,8 +41,12 @@ export default async function AuthorPage({ params }: AuthorPageProps) {
           lastName={user.last_name}
           pages={user.article_count}
           likes={user.total_likes}
-          birthDate={new Date(user.birth_date || "").getFullYear().toString()}
-          deathDate={new Date(user.death_date || "").getFullYear().toString()}
+          birthDate={
+            new Date(user.birth_date || "").getFullYear().toString() || ""
+          }
+          deathDate={
+            new Date(user.death_date || "").getFullYear().toString() || ""
+          }
           nationality={user.nationality || "Казак"}
           description={user.description || ""}
           image={user.image || "/profile_picture_placeholder.png"}
@@ -49,16 +54,7 @@ export default async function AuthorPage({ params }: AuthorPageProps) {
         <hr />
         <h3>Связанные статьи</h3>
         {articles.length ? (
-          <div className={styles.author_page__related_articles}>
-            {articles.map((article: any) => (
-              <ArticleCard
-                key={article.article_id}
-                href={"/articles/" + article.article_id}
-                title={article.title}
-                image={article.image || "/default_image.jpg"}
-              />
-            ))}
-          </div>
+          <ArticleCardsList articles={articles} />
         ) : (
           <p className="results_not_found_message">
             Связанных с автором страниц не найдено

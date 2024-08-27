@@ -11,8 +11,12 @@ export default function AuthorCardsList({ users }: { users: UserObject[] }) {
           href={"/authors/" + user.user_id}
           first_name={user.first_name}
           last_name={user.last_name}
-          birth_date={new Date(user.birth_date || "").getFullYear().toString()}
-          death_date={new Date(user.death_date || "").getFullYear().toString()}
+          birth_date={
+            new Date(user.birth_date || "").getFullYear().toString() || ""
+          }
+          death_date={
+            new Date(user.death_date || "").getFullYear().toString() || ""
+          }
           likes={user.total_likes}
           pages={user.article_count}
           image={user.image || "/profile_picture_placeholder.png"}
