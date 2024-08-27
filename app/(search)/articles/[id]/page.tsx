@@ -1,20 +1,81 @@
+import ArticleObject from "@/backend/objects/ArticleObject";
 import styles from "./page.module.scss";
 import Article from "@/components/ArticleComponent/Article";
+import { supabase } from "@/lib/supabase";
+import UserObject from "@/backend/objects/UserObject";
+import AuthorCard from "@/components/Author/AuthorCardComponent/AuthorCard";
 
-export default function ArticlePage({ parameters }: any) {
+async function fetchArticleById(article_id?: string): Promise<ArticleObject> {
+  const { data, error } = await supabase.rpc("get_articles", {
+    p_article_id: article_id,
+  });
+
+  if (error) {
+    console.error("Error fetching articles:", error);
+    throw error;
+  }
+
+  return data[0] || null;
+}
+
+async function fetchUsersByArticleId(
+  article_id?: string
+): Promise<UserObject[]> {
+  const { data, error } = await supabase.rpc("get_article_users", {
+    p_article_id: article_id,
+  });
+
+  if (error) {
+    console.error("Error fetching article users:", error);
+    throw error;
+  }
+
+  return data || [];
+}
+
+export default async function ArticlePage({ params }: any) {
+  const { id } = params;
+  let article: ArticleObject | null = await fetchArticleById(id);
+  if (!article) {
+    return <p className={styles.results__message}>Article not found.</p>;
+  }
+  let users: UserObject[] = await fetchUsersByArticleId(id);
   return (
     <div className={styles.article_page}>
       <div className={styles.article_page_wrapper}>
-        <Article 
-        title="Биография Абая" 
-        publish_date="2024" 
-        last_changed="2024" 
-        image = "/Abai_Kunanbaev.jpg"
-        content="Абай Кунанбаев родился 29 июля (10 августа) 1845 года в урочище Жидебай в Чингизских горах, которое в то время административно входило в состав Бийского уезда Томской губернии (ныне Абайский район Абайской области Республики Казахстан), в семье крупного бая Кунанбая Оскенбаева (Ускенбаева) рода Тобыкты племени Аргын. Семья Абая принадлежала к местной знати; дед (Оскенбай) и прадед (Иргизбай) главенствовали в своём роду в качестве правителей и биев.
-        Начатое в детстве домашнее обучение у муллы было продолжено в медресе, у муллы Ахмет-Ризы, в Семипалатинске, где преподавали арабский, персидский и другие восточные языки. Одновременно посещал русскую школу. К концу своей учёбы начал писать стихи, сначала приписывая их авторство своему другу Кокпаю Джантасову. С 13 лет отец Кунанбай начал приучать Абая к деятельности главы рода. В возрасте 28 лет Абай отошёл от неё, целиком занявшись самообразованием, но только к 40 годам создал свои первые взрослые стихотворения. Значительным событием для Абая явилось его общение с политическими ссыльными Евгением Михаэлисом, Нифонтом Долгополовым, Северином Гроссом.
-        На формирование мировоззрения Абая оказали влияние поэты и учёные Востока, придерживавшиеся гуманистических идей (Фирдоуси, Алишер Навои, Низами, Физули, Ибн Сина и другие), а также произведения русских классиков, а через них — и европейская литература вообще. Он переводил Крылова, Лермонтова, Пушкина, Гёте и Байрона.
-        Характерна история стихотворения «Қараңғы түнде тау қалғып» («Горы дремлют в тёмной ночи»), ставшего народной песней. Гёте написал «Wanderers Nachtlied» («Ночную песню странника»), Лермонтов переложил её на русский язык («Горные вершины спят во тьме ночной…»), а спустя ещё полвека Абай Кунанбаев передал её содержание на казахском языке." />
-        </div>
+        <Article
+          title={article.title}
+          publish_date={article.published_date || "не опубликовано"}
+          last_changed={article.updated_at || ""}
+          image={article.image || "/default_image.jpg"}
+          content={article.content}
+        />
+        {users.length ? (
+          <div className={styles.article_page__related_authors}>
+            {users.map((user) => (
+              <AuthorCard
+                key={user.user_id}
+                href={"/authors/" + user.user_id}
+                first_name={user.first_name}
+                last_name={user.last_name}
+                birth_date={new Date(user.birth_date || "")
+                  .getFullYear()
+                  .toString()}
+                death_date={new Date(user.death_date || "")
+                  .getFullYear()
+                  .toString()}
+                likes={user.total_likes}
+                pages={user.article_count}
+                image={user.image || "/profile_picture_placeholder.png"}
+              ></AuthorCard>
+            ))}
+          </div>
+        ) : (
+          <p className={styles.article_page__related_authors_not_found}>
+            Связанных с статьей авторов не найдено
+          </p>
+        )}
+      </div>
     </div>
   );
 }

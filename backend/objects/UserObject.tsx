@@ -1,4 +1,4 @@
-export default interface User {
+export default interface UserObject {
   user_id: number;
   type: "historical_figure" | "simple_user";
   first_name: string;

@@ -4,10 +4,9 @@ import { supabase } from "@/lib/supabase";
 import SearchBar from "@/components/SearchBarComponent/SearchBar";
 import AuthorCard from "@/components/Author/AuthorCardComponent/AuthorCard";
 import styles from "./page.module.scss";
-import User from "@/backend/objects/User";
-import AuthorStats from "@/backend/objects/AuthorStats";
+import UserObject from "@/backend/objects/UserObject";
 
-async function fetchUsers(query?: string): Promise<User[]> {
+async function fetchUsers(query?: string): Promise<UserObject[]> {
   let fetchedData: User[] = [];
 
   const { data, error } = await supabase.rpc("get_users", {});
@@ -17,7 +16,7 @@ async function fetchUsers(query?: string): Promise<User[]> {
   if (query) {
     fetchedData =
       data?.filter(
-        (user: User) =>
+        (user: UserObject) =>
           user.first_name.toLowerCase().includes(query.toLowerCase()) ||
           user.last_name.toLowerCase().includes(query.toLowerCase())
       ) || [];
@@ -33,7 +32,7 @@ export default function AuthorsPage({
 }: {
   searchParams: { query?: string };
 }) {
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<UserObject[]>([]);
   const [query, setQuery] = useState(searchParams.query || "");
 
   useEffect(() => {

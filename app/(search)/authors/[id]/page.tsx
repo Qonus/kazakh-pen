@@ -1,24 +1,26 @@
-import User from "@/backend/objects/User";
+import UserObject from "@/backend/objects/UserObject";
 import styles from "./page.module.scss";
 import AuthorInfo from "@/components/Author/AuthorInfoComponent/AuthorInfo";
 import { supabase } from "@/lib/supabase";
-import Article from "@/backend/objects/Article";
+import ArticleObject from "@/backend/objects/ArticleObject";
 import ArticleCard from "@/components/ArticleCardComponent/ArticleCard";
 
-async function fetchUserById(user_id?: string): Promise<User> {
+async function fetchUserById(user_id?: string): Promise<UserObject> {
   const { data, error } = await supabase.rpc("get_users", {
     p_user_id: user_id,
   });
 
   if (error) {
-    console.error("Error fetching articles:", error);
+    console.error("Error fetching users:", error);
     throw error;
   }
 
   return data[0] || null;
 }
 
-async function fetchArticlesByUserId(user_id?: string): Promise<Article[]> {
+async function fetchArticlesByUserId(
+  user_id?: string
+): Promise<ArticleObject[]> {
   const { data, error } = await supabase.rpc("get_user_articles", {
     p_user_id: user_id,
   });
@@ -38,11 +40,11 @@ interface AuthorPageProps {
 }
 export default async function AuthorPage({ params }: AuthorPageProps) {
   const { id } = params;
-  let user: User | null = await fetchUserById(id);
+  let user: UserObject | null = await fetchUserById(id);
   if (!user) {
-    return <p className={styles.results__message}>User not found.</p>;
+    return <p className={styles.results__message}>UserObject not found.</p>;
   }
-  let articles: Article[] = await fetchArticlesByUserId(id);
+  let articles: ArticleObject[] = await fetchArticlesByUserId(id);
   return (
     <div className={styles.author_page}>
       <div className={styles.author_page_wrapper}>
