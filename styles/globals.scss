@@ -39,3 +39,11 @@ a {
 .primary_color_svg {
     filter: invert(83%) sepia(65%) saturate(4248%) hue-rotate(335deg) brightness(100%) contrast(99%);
 }
+
+.results_not_found_message {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    color: $foreground-color-5;
+    margin: 40px;
+}

@@ -65,7 +65,7 @@ export default function ArticlesPage({
             ))}
           </ul>
         ) : (
-          <p className={styles.results__message}>No results found.</p>
+          <p className={styles.results__message}>Произведение не найдено.</p>
         )}
       </div>
     </div>

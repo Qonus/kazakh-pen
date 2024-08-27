@@ -72,7 +72,7 @@ export default function AuthorsPage({
             ))}
           </ul>
         ) : (
-          <p className={styles.results__message}>No results found.</p>
+          <p className="results_not_found_message">Автор не найден.</p>
         )}
       </div>
     </div>

@@ -37,7 +37,9 @@ export default async function ArticlePage({ params }: any) {
   const { id } = params;
   let article: ArticleObject | null = await fetchArticleById(id);
   if (!article) {
-    return <p className={styles.results__message}>Article not found.</p>;
+    return (
+      <p className="results_not_found_message">Произведение не существует.</p>
+    );
   }
   let users: UserObject[] = await fetchUsersByArticleId(id);
   return (

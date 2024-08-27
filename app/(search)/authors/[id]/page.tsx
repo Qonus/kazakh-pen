@@ -42,7 +42,7 @@ export default async function AuthorPage({ params }: AuthorPageProps) {
   const { id } = params;
   let user: UserObject | null = await fetchUserById(id);
   if (!user) {
-    return <p className={styles.results__message}>UserObject not found.</p>;
+    return <p className="results_not_found_message">Автора не существует.</p>;
   }
   let articles: ArticleObject[] = await fetchArticlesByUserId(id);
   return (
@@ -73,7 +73,7 @@ export default async function AuthorPage({ params }: AuthorPageProps) {
             ))}
           </div>
         ) : (
-          <p className={styles.author_page__related_articles_not_found}>
+          <p className="results_not_found_message">
             Связанных с автором страниц не найдено
           </p>
         )}

@@ -13,6 +13,13 @@
         display: flex;
         flex-direction: column;
     }
+
+    &__related_authors {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
 }
 
 
