@@ -5,43 +5,36 @@ import { supabase } from "@/lib/supabase";
 import UserObject from "@/backend/objects/UserObject";
 import AuthorCard from "@/components/Author/AuthorCardComponent/AuthorCard";
 
-async function fetchArticleById(article_id?: string): Promise<ArticleObject> {
-  const { data, error } = await supabase.rpc("get_articles", {
-    p_article_id: article_id,
-  });
-
-  if (error) {
-    console.error("Error fetching articles:", error);
-    throw error;
+async function fetchArticleData(article_id?: string) {
+  const response = await fetch(
+    `http://localhost:3000/api/articles/${article_id}`,
+    { cache: "no-store" }
+  );
+  if (!response.ok) {
+    throw new Error("Failed to fetch article data");
   }
-
-  return data[0] || null;
-}
-
-async function fetchUsersByArticleId(
-  article_id?: string
-): Promise<UserObject[]> {
-  const { data, error } = await supabase.rpc("get_article_users", {
-    p_article_id: article_id,
-  });
-
-  if (error) {
-    console.error("Error fetching article users:", error);
-    throw error;
-  }
-
-  return data || [];
+  return response.json();
 }
 
 export default async function ArticlePage({ params }: any) {
   const { id } = params;
-  let article: ArticleObject | null = await fetchArticleById(id);
+  let articleData;
+
+  try {
+    articleData = await fetchArticleData(id);
+  } catch (error) {
+    return (
+      <p className="results_not_found_message">Произведение не существует.</p>
+    );
+  }
+
+  const { article, users } = articleData;
+
   if (!article) {
     return (
       <p className="results_not_found_message">Произведение не существует.</p>
     );
   }
-  let users: UserObject[] = await fetchUsersByArticleId(id);
   return (
     <div className={styles.article_page}>
       <div className={styles.article_page_wrapper}>
@@ -54,7 +47,7 @@ export default async function ArticlePage({ params }: any) {
         />
         {users.length ? (
           <div className={styles.article_page__related_authors}>
-            {users.map((user) => (
+            {users.map((user: any) => (
               <AuthorCard
                 key={user.user_id}
                 href={"/authors/" + user.user_id}
