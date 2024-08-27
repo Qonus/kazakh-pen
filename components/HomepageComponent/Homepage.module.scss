@@ -1,6 +1,7 @@
 .main_section {
     width: 100%;
     display: flex;
+    margin-top: 50px;
 
     &_wrapper {
         width: $wrapper-width;
@@ -8,11 +9,14 @@
         display: flex;
         justify-content: space-between;
         gap:7%;
-        flex-shrink: 1;
     }
 
     &__content_left {
         width: 80%;
+        font-size: large;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
     }
 
     &__content_right {
@@ -33,4 +37,8 @@
         display: flex;
         justify-content: center;
     }
+}
+
+.header{
+    color: $primary-color;
 }
