@@ -1,34 +1,24 @@
 "use client";
-import { usePathname } from "next/navigation";
 import styles from "./Homepage.module.scss";
 import Link from "next/link";
 
 export default function Homepage() {
-  const pathname = usePathname();
   return (
     <div>
       <div className={styles.main_section}>
         <div className={styles.main_section_wrapper}>
           <div className={styles.main_section__content_left}>
-            <h1>Халуми</h1>
+            <h1>Добро пожаловать на Kazakh Pen</h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-              eget ligula ante. Morbi placerat sapien eget diam porta
-              consectetur. Donec vitae felis et odio feugiat vehicula.
-              Pellentesque consectetur ligula eget libero bibendum imperdiet eu
-              id erat. Aenean semper est ipsum, sed venenatis velit sodales sed.
-              Nunc mattis, erat sit amet vulputate tristique, augue est mollis
-              mauris, in cursus nibh purus eget nunc. Sed et laoreet lacus, quis
-              rhoncus mi.
+            Наш сайт предоставляет уникальную возможность углубиться в мир казахской литературы, где каждый пользователь может найти краткие содержания произведений известных казахских писателей. Мы стремимся сделать литературные шедевры доступными для широкой аудитории, предоставляя ясные и сжатые аннотации, которые помогают лучше понять основные темы и идеи каждого произведения.
             </p>
           </div>
           <div className={styles.main_section__content_right}>
-            <Link className="button" href="/test">
-              Поесть халуми
+            <Link className="button" href="/authors">
+              <h1> Поиск <br /> Авторов </h1>
             </Link>
-
-            <Link className="button" href="/test">
-              Поесть халуми
+            <Link className="button" href="/articles">
+            <h1> Поиск Произведений </h1>
             </Link>
           </div>
         </div>
@@ -37,13 +27,7 @@ export default function Homepage() {
       <div className={styles.secondary_section}>
         <div className={styles.secondary_section_wrapper}>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget
-            ligula ante. Morbi placerat sapien eget diam porta consectetur.
-            Donec vitae felis et odio feugiat vehicula. Pellentesque consectetur
-            ligula eget libero bibendum imperdiet eu id erat. Aenean semper est
-            ipsum, sed venenatis velit sodales sed. Nunc mattis, erat sit amet
-            vulputate tristique, augue est mollis mauris, in cursus nibh purus
-            eget nunc. Sed et laoreet lacus, quis rhoncus mi.
+          Мы собираем мнения различных критиков и исследователей, что позволяет читателям увидеть многообразие интерпретаций и оценок. Это создает прекрасную возможность для обсуждения и анализа, побуждая пользователей формировать собственное мнение о литературных произведениях.
           </p>
         </div>
       </div>
