@@ -1,14 +1,13 @@
-import ArticleObject from "@/backend/objects/ArticleObject";
 import styles from "./page.module.scss";
 import Article from "@/components/ArticleComponent/Article";
-import { supabase } from "@/lib/supabase";
-import UserObject from "@/backend/objects/UserObject";
 import AuthorCard from "@/components/Author/AuthorCardComponent/AuthorCard";
 
 async function fetchArticleData(article_id?: string) {
   const response = await fetch(
-    `http://localhost:3000/api/articles/${article_id}`,
-    { cache: "no-store" }
+    `${process.env.API_URL}/articles/${article_id}`,
+    {
+      cache: "no-store",
+    }
   );
   if (!response.ok) {
     throw new Error("Failed to fetch article data");

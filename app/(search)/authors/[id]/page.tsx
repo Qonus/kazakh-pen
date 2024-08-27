@@ -1,12 +1,9 @@
-import UserObject from "@/backend/objects/UserObject";
 import styles from "./page.module.scss";
 import AuthorInfo from "@/components/Author/AuthorInfoComponent/AuthorInfo";
-import { supabase } from "@/lib/supabase";
-import ArticleObject from "@/backend/objects/ArticleObject";
 import ArticleCard from "@/components/ArticleCardComponent/ArticleCard";
 
 async function fetchAuthorData(id: string) {
-  const response = await fetch(`http://localhost:3000/api/users/${id}`);
+  const response = await fetch(`${process.env.API_URL}/users/${id}`);
   if (!response.ok) {
     throw new Error("Failed to fetch author data");
   }
@@ -51,7 +48,7 @@ export default async function AuthorPage({ params }: AuthorPageProps) {
         <h3>Связанные статьи</h3>
         {articles.length ? (
           <div className={styles.author_page__related_articles}>
-            {articles.map((article: ArticleObject) => (
+            {articles.map((article: any) => (
               <ArticleCard
                 key={article.article_id}
                 href={"/articles/" + article.article_id}

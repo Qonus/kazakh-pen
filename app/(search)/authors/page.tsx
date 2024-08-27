@@ -8,7 +8,7 @@ import UserObject from "@/backend/objects/UserObject";
 
 async function fetchUsers(query?: string): Promise<UserObject[]> {
   const response = await fetch(
-    `http://localhost:3000/api/users?query=${query || ""}`
+    `${process.env.API_URL}/api/users?query=${query || ""}`
   );
   if (!response.ok) {
     throw new Error("Failed to fetch users");
