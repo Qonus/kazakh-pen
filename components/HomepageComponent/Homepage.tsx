@@ -11,31 +11,24 @@ export default function Homepage() {
             <Image 
               src="/pen-feather.svg"
               alt="pen feather"
-              width={120}
-              height={120}
+              width={200}
+              height={100}
             />
             <div className={styles.container__header__text}>
-              <h1> Kazakh Pen</h1>
+              <div className={styles.container__header__text__header}> Kazakh Pen </div>
               <div className={styles.container__header__text__description}>
                 Мир казахской литературы, краткие содержания произведений и статьи про известных казахских писателей. 
               </div>
             </div>
-                <Image
-                  className={styles.container__header__image}
-                  src="/Abai_Kunanbaev.jpg"
-                  width={300}
-                  height={120}
-                  alt="pen logo"
-                />
           </div>
 
           <div className={styles.container__about_us+" glass"}>
               <Image 
                 className={styles.container__about_us__img}
-                src="/Abai_Kunanbaev.jpg"
+                src="/books.jpg"
                 alt=""
                 width={150}
-                height={100}
+                height={150}
               />
               <div className={styles.container__about_us__text}>
                 <div className={styles.container__about_us__text__header}> О нашем проекте</div>
