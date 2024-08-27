@@ -36,9 +36,6 @@ export default function Article({
         height: fit-content;
         align-self: center;
     }
-    .link{
-        color: orange;
-    }
 
     h1{
         align-self: center;
