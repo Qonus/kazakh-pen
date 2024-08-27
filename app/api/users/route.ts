@@ -3,8 +3,8 @@ import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 import UserObject from '@/backend/objects/UserObject';
 
-async function fetchUsers(query?: string): Promise<UserObject[]> {
-  const { data, error } = await supabase.rpc("get_users", {});
+async function fetchUsers(query?: string, limit?: string): Promise<UserObject[]> {
+  const { data, error } = await supabase.rpc("get_users", {p_limit: limit ? limit : null});
 
   if (error) {
     console.error("Error fetching users:", error);
@@ -27,9 +27,10 @@ async function fetchUsers(query?: string): Promise<UserObject[]> {
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const query = searchParams.get('query') || '';
+  const limit = searchParams.get('limit') || '';
 
   try {
-    const users = await fetchUsers(query);
+    const users = await fetchUsers(query, limit);
     return NextResponse.json(users);
   } catch (error) {
     console.error("Error in API route:", error);
