@@ -16,7 +16,18 @@ export default function Article({
 }) {
   return (
     <div
-      dangerouslySetInnerHTML={{ __html: content }}
+      dangerouslySetInnerHTML={{
+        __html:
+          `
+    <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    </style>
+  ` + content,
+      }}
     ></div>
   );
 }
