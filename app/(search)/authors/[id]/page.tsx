@@ -27,17 +27,17 @@ async function fetchUserById(user_id: string) {
   return user || null;
 }
 
-async function fetchArticlesByUserId(user_id?: string): Promise<Article[]> {
-  const { data, error } = await supabase
-    .from("article_users")
-    .select("articles(*)")
-    .eq("user_id", user_id);
+async function fetchArticlesByUserId(userId?: string): Promise<Article[]> {
+  const { data, error } = await supabase.rpc("get_user_articles", {
+    p_user_id: userId,
+  });
 
   if (error) {
     console.error("Error fetching articles:", error);
     throw error;
   }
-  return data?.map((entry: { articles: any }) => entry.articles) || [];
+
+  return data || [];
 }
 
 interface AuthorPageProps {
