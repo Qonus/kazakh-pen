@@ -1,30 +1,19 @@
+// app/authors/page.tsx
 "use client";
 import { useState, useEffect } from "react";
-import { supabase } from "@/lib/supabase";
 import SearchBar from "@/components/SearchBarComponent/SearchBar";
 import AuthorCard from "@/components/Author/AuthorCardComponent/AuthorCard";
 import styles from "./page.module.scss";
 import UserObject from "@/backend/objects/UserObject";
 
 async function fetchUsers(query?: string): Promise<UserObject[]> {
-  let fetchedData: User[] = [];
-
-  const { data, error } = await supabase.rpc("get_users", {});
-
-  if (error) throw error;
-
-  if (query) {
-    fetchedData =
-      data?.filter(
-        (user: UserObject) =>
-          user.first_name.toLowerCase().includes(query.toLowerCase()) ||
-          user.last_name.toLowerCase().includes(query.toLowerCase())
-      ) || [];
-  } else {
-    fetchedData = data || [];
+  const response = await fetch(
+    `http://localhost:3000/api/users?query=${query || ""}`
+  );
+  if (!response.ok) {
+    throw new Error("Failed to fetch users");
   }
-
-  return fetchedData;
+  return response.json();
 }
 
 export default function AuthorsPage({
@@ -37,8 +26,12 @@ export default function AuthorsPage({
 
   useEffect(() => {
     const fetchInitialData = async () => {
-      const initialUsers = await fetchUsers(query);
-      setUsers(initialUsers);
+      try {
+        const initialUsers = await fetchUsers(query);
+        setUsers(initialUsers);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+      }
     };
 
     fetchInitialData();

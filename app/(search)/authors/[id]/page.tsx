@@ -5,32 +5,12 @@ import { supabase } from "@/lib/supabase";
 import ArticleObject from "@/backend/objects/ArticleObject";
 import ArticleCard from "@/components/ArticleCardComponent/ArticleCard";
 
-async function fetchUserById(user_id?: string): Promise<UserObject> {
-  const { data, error } = await supabase.rpc("get_users", {
-    p_user_id: user_id,
-  });
-
-  if (error) {
-    console.error("Error fetching users:", error);
-    throw error;
+async function fetchAuthorData(id: string) {
+  const response = await fetch(`http://localhost:3000/api/users/${id}`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch author data");
   }
-
-  return data[0] || null;
-}
-
-async function fetchArticlesByUserId(
-  user_id?: string
-): Promise<ArticleObject[]> {
-  const { data, error } = await supabase.rpc("get_user_articles", {
-    p_user_id: user_id,
-  });
-
-  if (error) {
-    console.error("Error fetching articles:", error);
-    throw error;
-  }
-
-  return data || [];
+  return response.json();
 }
 
 interface AuthorPageProps {
@@ -40,11 +20,19 @@ interface AuthorPageProps {
 }
 export default async function AuthorPage({ params }: AuthorPageProps) {
   const { id } = params;
-  let user: UserObject | null = await fetchUserById(id);
+  let authorData;
+
+  try {
+    authorData = await fetchAuthorData(id);
+  } catch (error) {
+    return <p className="results_not_found_message">Автора не существует.</p>;
+  }
+
+  const { user, articles } = authorData;
+
   if (!user) {
     return <p className="results_not_found_message">Автора не существует.</p>;
   }
-  let articles: ArticleObject[] = await fetchArticlesByUserId(id);
   return (
     <div className={styles.author_page}>
       <div className={styles.author_page_wrapper}>
@@ -63,7 +51,7 @@ export default async function AuthorPage({ params }: AuthorPageProps) {
         <h3>Связанные статьи</h3>
         {articles.length ? (
           <div className={styles.author_page__related_articles}>
-            {articles.map((article) => (
+            {articles.map((article: ArticleObject) => (
               <ArticleCard
                 key={article.article_id}
                 href={"/articles/" + article.article_id}

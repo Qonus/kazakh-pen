@@ -1,32 +1,21 @@
 "use client";
+
 import { useState, useEffect } from "react";
-import { supabase } from "@/lib/supabase";
 import SearchBar from "@/components/SearchBarComponent/SearchBar";
 import styles from "./page.module.scss";
 import ArticleCard from "@/components/ArticleCardComponent/ArticleCard";
 import Article from "@/backend/objects/ArticleObject";
 
 async function fetchArticles(query?: string): Promise<Article[]> {
-  let fetchedData: Article[] = [];
-
-  try {
-    const { data, error } = await supabase.from("articles").select("*");
-
-    if (error) throw error;
-
-    if (query) {
-      fetchedData =
-        data?.filter((article) =>
-          article.title.toLowerCase().includes(query.toLowerCase())
-        ) || [];
-    } else {
-      fetchedData = data || [];
-    }
-  } catch (error) {
-    console.error("Error fetching data:", error);
+  const response = await fetch(
+    `http://localhost:3000/api/articles?query=${encodeURIComponent(
+      query || ""
+    )}`
+  );
+  if (!response.ok) {
+    throw new Error("Failed to fetch articles");
   }
-
-  return fetchedData;
+  return response.json();
 }
 
 export default function ArticlesPage({
@@ -39,8 +28,12 @@ export default function ArticlesPage({
 
   useEffect(() => {
     const fetchInitialData = async () => {
-      const response = await fetchArticles(query);
-      setArticles(response);
+      try {
+        const response = await fetchArticles(query);
+        setArticles(response);
+      } catch (error) {
+        console.error("Error fetching articles:", error);
+      }
     };
 
     fetchInitialData();
