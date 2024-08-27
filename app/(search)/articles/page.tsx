@@ -4,7 +4,7 @@ import { supabase } from "@/lib/supabase";
 import SearchBar from "@/components/SearchBarComponent/SearchBar";
 import styles from "./page.module.scss";
 import ArticleCard from "@/components/ArticleCardComponent/ArticleCard";
-import Article from "@/backend/objects/Article";
+import Article from "@/backend/objects/ArticleObject";
 
 async function fetchArticles(query?: string): Promise<Article[]> {
   let fetchedData: Article[] = [];

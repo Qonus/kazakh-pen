@@ -1,4 +1,4 @@
-export default interface Article {
+export default interface ArticleObject {
   article_id: number;
   type: "opinion" | "work" | "biography";
   title: string;
