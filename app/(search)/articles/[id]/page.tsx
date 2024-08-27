@@ -4,7 +4,7 @@ import AuthorCard from "@/components/Author/AuthorCardComponent/AuthorCard";
 
 async function fetchArticleData(article_id?: string) {
   const response = await fetch(
-    `${process.env.API_URL}/articles/${article_id}`,
+    `${process.env.API_URL}/api/articles/${article_id}`,
     {
       cache: "no-store",
     }

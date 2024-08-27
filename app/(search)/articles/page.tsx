@@ -8,7 +8,7 @@ import Article from "@/backend/objects/ArticleObject";
 
 async function fetchArticles(query?: string): Promise<Article[]> {
   const response = await fetch(
-    `${process.env.API_URL}/articles?query=${encodeURIComponent(query || "")}`
+    `/api/articles?query=${encodeURIComponent(query || "")}`
   );
   if (!response.ok) {
     throw new Error("Failed to fetch articles");

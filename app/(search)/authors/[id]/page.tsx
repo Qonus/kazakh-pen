@@ -3,7 +3,7 @@ import AuthorInfo from "@/components/Author/AuthorInfoComponent/AuthorInfo";
 import ArticleCard from "@/components/ArticleCardComponent/ArticleCard";
 
 async function fetchAuthorData(id: string) {
-  const response = await fetch(`${process.env.API_URL}/users/${id}`);
+  const response = await fetch(`${process.env.API_URL}/api/users/${id}`);
   if (!response.ok) {
     throw new Error("Failed to fetch author data");
   }
