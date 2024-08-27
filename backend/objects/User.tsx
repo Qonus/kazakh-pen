@@ -10,4 +10,6 @@ export default interface User {
   image?: string;
   created_at: string;
   updated_at: string;
+  article_count: number;
+  total_likes: number;
 }

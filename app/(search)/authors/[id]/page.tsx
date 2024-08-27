@@ -5,31 +5,22 @@ import { supabase } from "@/lib/supabase";
 import Article from "@/backend/objects/Article";
 import ArticleCard from "@/components/ArticleCardComponent/ArticleCard";
 
-async function fetchUserById(user_id: string) {
-  let user: User | null = null;
+async function fetchUserById(user_id?: string): Promise<User> {
+  const { data, error } = await supabase.rpc("get_users", {
+    p_user_id: user_id,
+  });
 
-  try {
-    const { data, error } = await supabase
-      .from("users")
-      .select("*")
-      .eq("user_id", user_id)
-      .single();
-
-    if (error) {
-      console.error("Error fetching user:", error);
-    } else {
-      user = data;
-    }
-  } catch (error) {
-    console.error("Error fetching data:", error);
+  if (error) {
+    console.error("Error fetching articles:", error);
+    throw error;
   }
 
-  return user || null;
+  return data[0] || null;
 }
 
-async function fetchArticlesByUserId(userId?: string): Promise<Article[]> {
+async function fetchArticlesByUserId(user_id?: string): Promise<Article[]> {
   const { data, error } = await supabase.rpc("get_user_articles", {
-    p_user_id: userId,
+    p_user_id: user_id,
   });
 
   if (error) {
@@ -58,8 +49,8 @@ export default async function AuthorPage({ params }: AuthorPageProps) {
         <AuthorInfo
           firstName={user.first_name}
           lastName={user.last_name}
-          pages={0}
-          likes={0}
+          pages={user.article_count}
+          likes={user.total_likes}
           birthDate={new Date(user.birth_date || "").getFullYear().toString()}
           deathDate={new Date(user.death_date || "").getFullYear().toString()}
           nationality={user.nationality || "Казак"}
@@ -80,7 +71,9 @@ export default async function AuthorPage({ params }: AuthorPageProps) {
             ))}
           </div>
         ) : (
-          <p className={styles.results__message}>No results found.</p>
+          <p className={styles.author_page__related_articles_not_found}>
+            Связанных с автором страниц не найдено
+          </p>
         )}
       </div>
     </div>

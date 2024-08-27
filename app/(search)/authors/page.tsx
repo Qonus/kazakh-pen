@@ -5,29 +5,24 @@ import SearchBar from "@/components/SearchBarComponent/SearchBar";
 import AuthorCard from "@/components/Author/AuthorCardComponent/AuthorCard";
 import styles from "./page.module.scss";
 import User from "@/backend/objects/User";
+import AuthorStats from "@/backend/objects/AuthorStats";
 
 async function fetchUsers(query?: string): Promise<User[]> {
   let fetchedData: User[] = [];
 
-  try {
-    const { data: users, error: userError } = await supabase
-      .from("users")
-      .select("*");
+  const { data, error } = await supabase.rpc("get_users", {});
 
-    if (userError) throw userError;
+  if (error) throw error;
 
-    if (query) {
-      fetchedData =
-        users?.filter(
-          (user) =>
-            user.first_name.toLowerCase().includes(query.toLowerCase()) ||
-            user.last_name.toLowerCase().includes(query.toLowerCase())
-        ) || [];
-    } else {
-      fetchedData = users || [];
-    }
-  } catch (error) {
-    console.error("Error fetching data:", error);
+  if (query) {
+    fetchedData =
+      data?.filter(
+        (user: User) =>
+          user.first_name.toLowerCase().includes(query.toLowerCase()) ||
+          user.last_name.toLowerCase().includes(query.toLowerCase())
+      ) || [];
+  } else {
+    fetchedData = data || [];
   }
 
   return fetchedData;
@@ -71,6 +66,8 @@ export default function AuthorsPage({
                 death_date={new Date(user.death_date || "")
                   .getFullYear()
                   .toString()}
+                likes={user.total_likes}
+                pages={user.article_count}
                 image={user.image || "/profile_picture_placeholder.png"}
               ></AuthorCard>
             ))}
