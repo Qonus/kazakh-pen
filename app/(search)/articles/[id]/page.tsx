@@ -1,6 +1,6 @@
 import styles from "./page.module.scss";
-import Article from "@/components/ArticleComponent/Article";
-import AuthorCard from "@/components/Author/AuthorCardComponent/AuthorCard";
+import Article from "@/components/Article/ArticleComponent/Article";
+import AuthorCardsList from "@/components/Author/AuthorCardsListComponent/AuthorCardsList";
 
 async function fetchArticleData(article_id?: string) {
   const response = await fetch(
@@ -45,29 +45,13 @@ export default async function ArticlePage({ params }: any) {
           content={article.content}
         />
         {users.length ? (
-          <div className={styles.article_page__related_authors}>
-            {users.map((user: any) => (
-              <AuthorCard
-                key={user.user_id}
-                href={"/authors/" + user.user_id}
-                first_name={user.first_name}
-                last_name={user.last_name}
-                birth_date={new Date(user.birth_date || "")
-                  .getFullYear()
-                  .toString()}
-                death_date={new Date(user.death_date || "")
-                  .getFullYear()
-                  .toString()}
-                likes={user.total_likes}
-                pages={user.article_count}
-                image={user.image || "/profile_picture_placeholder.png"}
-              ></AuthorCard>
-            ))}
+          <div className={styles.article_page__authors}>
+            <h3>Связанные авторы</h3>
+            <hr />
+            <AuthorCardsList users={users} />
           </div>
         ) : (
-          <p className={styles.article_page__related_authors_not_found}>
-            Связанных с статьей авторов не найдено
-          </p>
+          <p className="results_not_found_message">Связанных авторов нету.</p>
         )}
       </div>
     </div>

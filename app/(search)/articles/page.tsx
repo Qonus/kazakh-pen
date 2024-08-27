@@ -3,12 +3,15 @@
 import { useState, useEffect } from "react";
 import SearchBar from "@/components/SearchBarComponent/SearchBar";
 import styles from "./page.module.scss";
-import ArticleCard from "@/components/ArticleCardComponent/ArticleCard";
+import ArticleCard from "@/components/Article/ArticleCardComponent/ArticleCard";
 import Article from "@/backend/objects/ArticleObject";
 
 async function fetchArticles(query?: string): Promise<Article[]> {
   const response = await fetch(
-    `/api/articles?query=${encodeURIComponent(query || "")}`
+    `/api/articles?query=${encodeURIComponent(query || "")}`,
+    {
+      cache: "no-store",
+    }
   );
   if (!response.ok) {
     throw new Error("Failed to fetch articles");

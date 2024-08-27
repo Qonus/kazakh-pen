@@ -1,5 +1,5 @@
 import styles from "./AuthorRelations.module.scss";
-import ArticleCard from "../../ArticleCardComponent/ArticleCard";
+import ArticleCard from "../../Article/ArticleCardComponent/ArticleCard";
 import Link from "next/link";
 
 //я не знаю как передавать сюда динамическое количество карточек и работ если честно
