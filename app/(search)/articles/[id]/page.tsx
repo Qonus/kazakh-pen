@@ -1,19 +1,7 @@
+import { fetchArticleData } from "@/backend/request/articles";
 import styles from "./page.module.scss";
 import Article from "@/components/Article/ArticleComponent/Article";
 import AuthorCardsList from "@/components/Author/AuthorCardsListComponent/AuthorCardsList";
-
-async function fetchArticleData(article_id?: string) {
-  const response = await fetch(
-    `${process.env.API_URL}/api/articles/${article_id}`,
-    {
-      cache: "no-store",
-    }
-  );
-  if (!response.ok) {
-    throw new Error("Failed to fetch article data");
-  }
-  return response.json();
-}
 
 export default async function ArticlePage({ params }: any) {
   const { id } = params;

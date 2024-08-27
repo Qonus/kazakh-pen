@@ -8,7 +8,7 @@
 - add `.env` file into the project and setup your supabase API keys inside. It should look like this:
 
 ```
-API_URL = "http://localhost:3000"
+NEXT_PUBLIC_URL = "http://localhost:3000"
 
 NEXT_PUBLIC_SUPABASE_URL = "YOUR_SUPABASE_URL"
 NEXT_PUBLIC_SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY"

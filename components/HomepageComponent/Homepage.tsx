@@ -1,46 +1,75 @@
-"use client";
+import { fetchArticles } from "@/backend/request/articles";
 import styles from "./Homepage.module.scss";
-import Link from "next/link";
 import Image from "next/image";
+import { fetchUsers } from "@/backend/request/users";
+import ArticleCardsList from "../Article/ArticleCardsListComponent/ArticleCardsList";
+import AuthorCardsList from "../Author/AuthorCardsListComponent/AuthorCardsList";
 
-export default function Homepage() {
+export default async function Homepage() {
+  const top_articles = await fetchArticles(`?limit=6`);
+  const top_users = await fetchUsers(`?limit=6`);
+
   return (
-      <div className={styles.container}>
-        <div className={styles.container_wrapper}>
-          <div className={styles.container__header}>
-            <Image 
-              src="/pen-feather.svg"
-              alt="pen feather"
-              width={200}
-              height={100}
-            />
-            <div className={styles.container__header__text}>
-              <div className={styles.container__header__text__header}> Kazakh Pen </div>
-              <div className={styles.container__header__text__description}>
-                Мир казахской литературы, краткие содержания произведений и статьи про известных казахских писателей. 
-              </div>
+    <div className={styles.homepage}>
+      <div className={styles.homepage_wrapper}>
+        <div className={styles.homepage__header}>
+          <Image
+            src="/pen-feather.svg"
+            alt="pen feather"
+            width={120}
+            height={120}
+          />
+          <div className={styles.homepage__header__text}>
+            <h1> Kazakh Pen</h1>
+            <div className={styles.homepage__header__text__description}>
+              Мир казахской литературы, краткие содержания произведений и статьи
+              про известных казахских писателей.
             </div>
           </div>
+          <Image
+            className={styles.homepage__header__image}
+            src="/Abai_Kunanbaev.jpg"
+            width={300}
+            height={120}
+            alt="pen logo"
+          />
+        </div>
 
-          <div className={styles.container__about_us+" glass"}>
-              <Image 
-                className={styles.container__about_us__img}
-                src="/books.jpg"
-                alt=""
-                width={150}
-                height={150}
-              />
-              <div className={styles.container__about_us__text}>
-                <div className={styles.container__about_us__text__header}> О нашем проекте</div>
-                <div className={styles.container__about_us__text__description}> Kazakh Pen-проект, призваный помочь людям углубиться в историю и  культуру Казахстана, 
-                  путем централизации данных о различных казахских  авторах. Наш проект создан что бы продвигать 
-                  казахскую культуру и  историю в массы, облегчая к ней доступ для обычных людей. Kazakh Pen  
-                  также поможет заинтересованным проводить исследования о казахских  авторах.</div>
-              </div>
+        <div className={styles.homepage__about_us + " glass"}>
+          <Image
+            className={styles.homepage__about_us__img}
+            src="/Abai_Kunanbaev.jpg"
+            alt=""
+            width={150}
+            height={100}
+          />
+          <div className={styles.homepage__about_us__text}>
+            <div className={styles.homepage__about_us__text__header}>
+              О нашем проекте
+            </div>
+            <div className={styles.homepage__about_us__text__description}>
+              Kazakh Pen-проект, призваный помочь людям углубиться в историю и
+              культуру Казахстана, путем централизации данных о различных
+              казахских авторах. Наш проект создан что бы продвигать казахскую
+              культуру и историю в массы, облегчая к ней доступ для обычных
+              людей. Kazakh Pen также поможет заинтересованным проводить
+              исследования о казахских авторах.
+            </div>
           </div>
+        </div>
+
+        <div className={styles.top_articles}>
+          <h1> Популярные произведения: </h1>
+          <hr />
+          <ArticleCardsList articles={top_articles} />
+        </div>
+
+        <div className={styles.top_users}>
           <h1> Недавно добавленные произведения </h1>
           <hr />
+          <AuthorCardsList users={top_users} />
         </div>
       </div>
+    </div>
   );
 }

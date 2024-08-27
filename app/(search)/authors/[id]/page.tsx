@@ -1,17 +1,7 @@
 import styles from "./page.module.scss";
 import AuthorInfo from "@/components/Author/AuthorInfoComponent/AuthorInfo";
-import ArticleCard from "@/components/Article/ArticleCardComponent/ArticleCard";
 import ArticleCardsList from "@/components/Article/ArticleCardsListComponent/ArticleCardsList";
-
-async function fetchAuthorData(id: string) {
-  const response = await fetch(`${process.env.API_URL}/api/users/${id}`, {
-    cache: "no-store",
-  });
-  if (!response.ok) {
-    throw new Error("Failed to fetch author data");
-  }
-  return response.json();
-}
+import { fetchAuthorData } from "@/backend/request/users";
 
 interface AuthorPageProps {
   params: {

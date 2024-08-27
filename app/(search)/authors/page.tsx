@@ -4,16 +4,7 @@ import SearchBar from "@/components/SearchBarComponent/SearchBar";
 import styles from "./page.module.scss";
 import UserObject from "@/backend/objects/UserObject";
 import AuthorCardsList from "@/components/Author/AuthorCardsListComponent/AuthorCardsList";
-
-async function fetchUsers(query?: string): Promise<UserObject[]> {
-  const response = await fetch(`/api/users?query=${query || ""}`, {
-    cache: "no-store",
-  });
-  if (!response.ok) {
-    throw new Error("Failed to fetch users");
-  }
-  return response.json();
-}
+import { fetchUsers } from "@/backend/request/users";
 
 export default function AuthorsPage({
   searchParams,
@@ -26,7 +17,7 @@ export default function AuthorsPage({
   useEffect(() => {
     const fetchInitialData = async () => {
       try {
-        const initialUsers = await fetchUsers(query);
+        const initialUsers = await fetchUsers(`?query=${query}`);
         setUsers(initialUsers);
       } catch (error) {
         console.error("Error fetching users:", error);
