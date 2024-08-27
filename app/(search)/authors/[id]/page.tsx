@@ -40,8 +40,12 @@ export default async function AuthorPage({ params }: AuthorPageProps) {
           lastName={user.last_name}
           pages={user.article_count}
           likes={user.total_likes}
-          birthDate={new Date(user.birth_date || "").getFullYear().toString()}
-          deathDate={new Date(user.death_date || "").getFullYear().toString()}
+          birthDate={
+            new Date(user.birth_date || "").getFullYear().toString() || ""
+          }
+          deathDate={
+            new Date(user.death_date || "").getFullYear().toString() || ""
+          }
           nationality={user.nationality || "Казак"}
           description={user.description || ""}
           image={user.image || "/profile_picture_placeholder.png"}
