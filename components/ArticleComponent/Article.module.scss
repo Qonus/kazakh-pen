@@ -13,9 +13,15 @@
 .title{
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .p{
     margin-top: 20px;
+}
+
+.dates{
+    color: gray;
+    font-size: small;
 }
