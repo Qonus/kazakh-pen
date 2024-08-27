@@ -5,6 +5,7 @@ import SearchBar from "@/components/SearchBarComponent/SearchBar";
 import styles from "./page.module.scss";
 import ArticleCard from "@/components/Article/ArticleCardComponent/ArticleCard";
 import Article from "@/backend/objects/ArticleObject";
+import ArticleCardsList from "@/components/Article/ArticleCardsListComponent/ArticleCardsList";
 
 async function fetchArticles(query?: string): Promise<Article[]> {
   const response = await fetch(
@@ -48,16 +49,7 @@ export default function ArticlesPage({
       />
       <div className={styles.results_wrapper}>
         {articles.length ? (
-          <ul className={styles.results__list}>
-            {articles.map((article) => (
-              <ArticleCard
-                key={article.article_id}
-                href={"/articles/" + article.article_id}
-                title={article.title}
-                image={article.image || "/default_image.jpg"}
-              ></ArticleCard>
-            ))}
-          </ul>
+          <ArticleCardsList articles={articles} />
         ) : (
           <p className="results_not_found_message">Произведение не найдено.</p>
         )}

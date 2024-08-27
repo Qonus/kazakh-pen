@@ -10,7 +10,9 @@
     overflow: hidden;
     
     &:hover {
-        background-color: rgba(0, 0, 0, 0.5);
+        .article_card__stats {
+            opacity: 1;
+        }
     }
 
     &__image {
@@ -19,8 +21,33 @@
         position: absolute;
         top: 0%;
         bottom: 0%;
-        z-index: -1;
+        z-index: -2;
         object-fit: cover;
+    }
+
+    &__stats {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0%;
+        bottom: 0%;
+        z-index: -1;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        font-size: 20px;
+        opacity: 0;
+        transition: opacity;
+        transition-duration: 0.5s;
+        
+        &:hover {
+            opacity: 1;
+        }
+
+        &__heart {
+        }
     }
 
     &__title{
