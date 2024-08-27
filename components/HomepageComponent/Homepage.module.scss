@@ -9,6 +9,7 @@
         display: flex;
         justify-content: space-between;
         flex-direction: column;
+        align-items: center;
         gap:30px;
     }
 
@@ -39,8 +40,23 @@
         gap:20px;
 
         &__img{
-            object-fit: cover;
+            object-fit: fill;
             border-radius: 20px;
+        }
+
+        &__text{
+            display: flex;
+            flex-direction: column;
+            gap:7px;
+
+            &__header{
+                font-size: 25px;
+            }
+
+            &__description{
+                font-size: medium;
+                color: $foreground-color-2;
+            }
         }
     }
 }
