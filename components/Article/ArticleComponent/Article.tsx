@@ -17,6 +17,13 @@ export default function Article({
   return (
     <>
     <div className={styles.dates}>Создано: {publish_date}, Последнее изменение: {last_changed}</div>
+    <Image 
+    className={styles.article__img}
+    src={image}
+    alt="article_image"
+    width={800}
+    height={400}
+    />
     <div
     dangerouslySetInnerHTML={{
       __html:
