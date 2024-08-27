@@ -16,7 +16,6 @@ export default function Article({
 }) {
   return (
     <div
-      className={styles.content}
       dangerouslySetInnerHTML={{ __html: content }}
     ></div>
   );
