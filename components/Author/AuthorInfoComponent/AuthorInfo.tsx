@@ -87,14 +87,7 @@ export default function AuthorInfo({
           {description}
         </p>
         {(isOverflowing || isExpanded) && (
-          <button
-            className={
-              styles.author_info__text +
-              " " +
-              styles.author_info__right__read_more_button
-            }
-            onClick={on_click_read_more}
-          >
+          <button className="read_more_button" onClick={on_click_read_more}>
             {isExpanded ? "Свернуть" : "Читать дальше"}
           </button>
         )}
