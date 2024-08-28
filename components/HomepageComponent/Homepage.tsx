@@ -4,54 +4,50 @@ import Image from "next/image";
 import { fetchUsers } from "@/backend/request/users";
 import ArticleCardsList from "../Article/ArticleCardsListComponent/ArticleCardsList";
 import AuthorCardsList from "../Author/AuthorCardsListComponent/AuthorCardsList";
-import Link from "next/link";
 
 export default async function Homepage() {
-  const top_articles = await fetchArticles("?limit=6");
-  const top_users = await fetchUsers("?limit=6");
+  const top_articles = await fetchArticles(`?limit=6`);
+  const top_users = await fetchUsers(`?limit=6`);
 
   return (
     <div className={styles.homepage}>
       <div className={styles.homepage_wrapper}>
-        <div className={styles.homepage__hero_section}>
+        <div className={styles.homepage__header}>
           <Image
             src="/pen-feather.svg"
             alt="pen feather"
             width={120}
             height={120}
           />
-          <div className={styles.homepage__hero_section__text}>
-            <h1 className={styles.homepage__hero_section__text__header}>
-              {" "}
-              Kazakh Pen
-            </h1>
-            <div className={styles.homepage__description}>
+          <div className={styles.homepage__header__text}>
+            <h1> Kazakh Pen</h1>
+            <div className={styles.homepage__header__text__description}>
               Мир казахской литературы, краткие содержания произведений и статьи
               про известных казахских писателей.
             </div>
           </div>
-          {/* <Image
-            className={styles.homepage__hero_section__image}
+          <Image
+            className={styles.homepage__header__image}
             src="/Abai_Kunanbaev.jpg"
             width={300}
             height={120}
             alt="pen logo"
-          /> */}
+          />
         </div>
 
-        <div className={styles.homepage__about_us_section + " glass"}>
+        <div className={styles.homepage__about_us + " glass"}>
           <Image
-            className={styles.homepage__about_us_section__image}
+            className={styles.homepage__about_us__img}
             src="/Abai_Kunanbaev.jpg"
             alt=""
-            width={300}
-            height={300}
+            width={150}
+            height={100}
           />
-          <div className={styles.homepage__about_us_section__text}>
-            <div className={styles.homepage__about_us_section__text__header}>
-              <h2>О нашем проекте</h2>
+          <div className={styles.homepage__about_us__text}>
+            <div className={styles.homepage__about_us__text__header}>
+              О нашем проекте
             </div>
-            <div className={styles.homepage__description}>
+            <div className={styles.homepage__about_us__text__description}>
               Kazakh Pen-проект, призваный помочь людям углубиться в историю и
               культуру Казахстана, путем централизации данных о различных
               казахских авторах. Наш проект создан что бы продвигать казахскую
@@ -62,26 +58,16 @@ export default async function Homepage() {
           </div>
         </div>
 
-        <div className={styles.homepage__top_articles}>
+        <div className={styles.top_articles}>
           <h1> Популярные произведения: </h1>
           <hr />
           <ArticleCardsList articles={top_articles} />
-          <div className={styles.homepage__read_more_shadow}>
-            <Link href="/articles" className="read_more_button">
-              Узнать больше
-            </Link>
-          </div>
         </div>
 
-        <div className={styles.homepage__top_users}>
-          <h1> Популярные авторы </h1>
+        <div className={styles.top_users}>
+          <h1> Недавно добавленные произведения </h1>
           <hr />
           <AuthorCardsList users={top_users} />
-          <div className={styles.homepage__read_more_shadow}>
-            <Link href="/authors" className="read_more_button">
-              Узнать больше
-            </Link>
-          </div>
         </div>
       </div>
     </div>
