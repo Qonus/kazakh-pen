@@ -1,8 +1,5 @@
 # Helios Oyan Hackathon
 
-
-https://github.com/user-attachments/assets/67a1f7ea-58e6-4ebb-8047-26170902bc20
-
 https://github.com/user-attachments/assets/ed2fd789-11f8-4581-8328-82fde01c27b2
 
 https://github.com/user-attachments/assets/bfd500e3-b645-40bb-8f58-ed8ea89fbc2b
