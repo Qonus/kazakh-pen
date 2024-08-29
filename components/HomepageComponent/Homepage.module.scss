@@ -41,7 +41,10 @@
         padding: 40px;
         width: 100%;
         align-self: center;
+        justify-content: center;
+        align-items: center;
         display: flex;
+        flex-direction: column;
         gap: 40px;
 
         &__image{
