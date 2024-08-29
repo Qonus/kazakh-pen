@@ -1,5 +1,7 @@
 # Helios Oyan Hackathon
 
+Our figma design sheet: [Kazakh Pen Design](https://www.figma.com/design/hxceXkJ44sjDgiUejzqATE/Kazakh-Pen?node-id=0-1&t=UWFdNJPkPnwEpguv-1)
+
 https://github.com/user-attachments/assets/ed2fd789-11f8-4581-8328-82fde01c27b2
 
 https://github.com/user-attachments/assets/bfd500e3-b645-40bb-8f58-ed8ea89fbc2b
