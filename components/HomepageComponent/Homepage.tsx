@@ -4,12 +4,22 @@ import Image from "next/image";
 import { fetchUsers } from "@/backend/request/users";
 import ArticleCardsList from "../Article/ArticleCardsListComponent/ArticleCardsList";
 import AuthorCardsList from "../Author/AuthorCardsListComponent/AuthorCardsList";
-import Link from "next/link";
 
-export default async function Homepage() {
+//for internationalisation
+import {ReactNode} from 'react';
+import {useTranslations} from 'next-intl';
+import {Link} from '@/src/i18n/routing';
+
+type Props = {
+  children?: ReactNode;
+  title: ReactNode;
+};
+
+export default async function Homepage(locale: any) {
   const top_articles = await fetchArticles("?limit=6");
   const top_users = await fetchUsers("?limit=6");
-
+  const t = await useTranslations('Homepage');
+  
   return (
     <div className={styles.homepage}>
       <div className={styles.homepage_wrapper}>
@@ -23,20 +33,12 @@ export default async function Homepage() {
           <div className={styles.homepage__hero_section__text}>
             <h1 className={styles.homepage__hero_section__text__header}>
               {" "}
-              Kazakh Pen
+              {t('title')}
             </h1>
             <div className={styles.homepage__description}>
-              Мир казахской литературы, краткие содержания произведений и статьи
-              про известных казахских писателей.
+              {t('about')}
             </div>
           </div>
-          {/* <Image
-            className={styles.homepage__hero_section__image}
-            src="/Abai_Kunanbaev.jpg"
-            width={300}
-            height={120}
-            alt="pen logo"
-          /> */}
         </div>
 
         <div className={styles.homepage__about_us_section + " glass"}>
@@ -49,15 +51,10 @@ export default async function Homepage() {
           />
           <div className={styles.homepage__about_us_section__text}>
             <div className={styles.homepage__about_us_section__text__header}>
-              <h2>О нашем проекте</h2>
+              <h2>{t('about_us')}</h2>
             </div>
             <div className={styles.homepage__description}>
-              Kazakh Pen-проект, призваный помочь людям углубиться в историю и
-              культуру Казахстана, путем централизации данных о различных
-              казахских авторах. Наш проект создан что бы продвигать казахскую
-              культуру и историю в массы, облегчая к ней доступ для обычных
-              людей. Kazakh Pen также поможет заинтересованным проводить
-              исследования о казахских авторах.
+              {t('description')}
             </div>
           </div>
         </div>
