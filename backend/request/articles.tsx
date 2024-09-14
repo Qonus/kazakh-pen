@@ -8,7 +8,7 @@ export async function fetchArticles(params: string): Promise<ArticleObject[]> {
     }
   );
   if (!response.ok) {
-    //throw new Error("Failed to fetch articles");
+    throw new Error("Failed to fetch articles");
   }
   return response.json();
 }

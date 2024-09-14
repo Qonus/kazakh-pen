@@ -7,18 +7,13 @@ import AuthorCardsList from "../Author/AuthorCardsListComponent/AuthorCardsList"
 
 //for internationalisation
 import {ReactNode} from 'react';
-import {useTranslations} from 'next-intl';
+import {getTranslations} from 'next-intl/server';
 import {Link} from '@/src/i18n/routing';
-
-type Props = {
-  children?: ReactNode;
-  title: ReactNode;
-};
 
 export default async function Homepage(locale: any) {
   const top_articles = await fetchArticles("?limit=6");
   const top_users = await fetchUsers("?limit=6");
-  const t = await useTranslations('Homepage');
+  const t = await getTranslations('HomePage');
   
   return (
     <div className={styles.homepage}>
