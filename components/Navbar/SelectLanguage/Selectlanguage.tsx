@@ -1,6 +1,7 @@
 'use client'
 
 import React from "react";
+import Link from "next/link";
 import {
     Dropdown,
     DropdownTrigger,
@@ -12,11 +13,11 @@ import {
 export default function SelectLanguage() {
   const items = [
     {
-      key: "russian",
+      key: "rus",
       label: "Русский",
     },
     {
-      key: "kazakh",
+      key: "kaz",
       label: "Қазақша",
     }
   ];
@@ -30,17 +31,12 @@ export default function SelectLanguage() {
       aria-label="Dynamic Actions" 
       items={items} 
       variant="light"
-      onAction={(key) => alert(key)} //onAction will trigger when you select an option in dropdown
+       //onAction will trigger when you select an option in dropdown
       > 
-        {(item) => (
-          <DropdownItem
-            key={item.key}
-            color={item.key === "delete" ? "danger" : "default"}
-            className={item.key === "delete" ? "text-danger" : ""}
-          >
-            {item.label}
-          </DropdownItem>
-        )}
+        <DropdownItem key="kaz"> <Link href="/kaz"> Қазақша </Link></DropdownItem>
+        <DropdownItem key="rus" className="text-danger" color="primary">
+        <Link href="/rus"> Русский </Link>
+        </DropdownItem>
       </DropdownMenu>
     </Dropdown>
   );
