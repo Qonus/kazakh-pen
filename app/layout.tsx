@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../styles/globals.scss";
-import Navbar from "@/components/NavbarComponent/Navbar";
+import Navbar from "@/components/Navbar/NavbarComponent/Navbar";
 import Footer from "@/components/FooterComponent/Footer";
 
 export const metadata: Metadata = {

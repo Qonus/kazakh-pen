@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "./Navbar.module.scss";
 import Image from "next/image";
+import SelectLanguage from "../SelectLanguage/Selectlanguage";
 
 export default function Navbar() {
   return (
@@ -18,6 +19,7 @@ export default function Navbar() {
             <h3>Kazakh Pen</h3>
           </Link>
           <div className={styles.navbar__nav}>
+            <SelectLanguage />
             <Link href="/authors">
               <p>Авторы</p>
             </Link>
