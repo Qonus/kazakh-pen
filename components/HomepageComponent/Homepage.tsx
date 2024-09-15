@@ -14,16 +14,26 @@ export default async function Homepage() {
     <div className={styles.homepage}>
       <div className={styles.homepage_wrapper}>
         <div className={styles.homepage__hero_section}>
-          <Image
-            src="/pen-feather.svg"
-            alt="pen feather"
-            width={120}
-            height={120}
-          />
+          <div className={styles.homepage__hero_section__image}>
+            <Image
+              src="/pen-feather.svg"
+              alt="pen feather"
+              width={120}
+              height={120}
+            />
+          </div>
           <div className={styles.homepage__hero_section__text}>
             <h1 className={styles.homepage__hero_section__text__header}>
               {" "}
               Kazakh Pen
+              <div className={styles.homepage__hero_section__text__header__mobile_image}>
+              <Image
+              src="/pen-feather.svg"
+              alt="pen feather"
+              width={40}
+              height={40}
+              />
+              </div>
             </h1>
             <div className={styles.homepage__description}>
               Мир казахской литературы, краткие содержания произведений и статьи
