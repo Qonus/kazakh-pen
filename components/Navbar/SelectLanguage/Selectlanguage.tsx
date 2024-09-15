@@ -2,6 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
+import {usePathname, useRouter} from '@/src/i18n/routing';
+
 import {
     Dropdown,
     DropdownTrigger,
@@ -31,7 +33,7 @@ export default function SelectLanguage() {
       aria-label="Dynamic Actions" 
       items={items} 
       variant="light"
-       //onAction will trigger when you select an option in dropdown
+      //onAction will trigger when you select an option in dropdown
       > 
         <DropdownItem key="kaz"> <Link href="/kaz" locale="kaz"> Қазақша </Link> </DropdownItem>
         <DropdownItem key="rus"> <Link href="/rus" locale="rus"> Русский </Link> </DropdownItem>

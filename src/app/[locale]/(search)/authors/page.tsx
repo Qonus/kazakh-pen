@@ -9,11 +9,13 @@ import { fetchUsers } from "@/backend/request/users";
 
 //for internationalisation
 import { NextIntlClientProvider } from 'next-intl';
+import { useLocale } from "next-intl";
 
 
 
 export default function AuthorsPage(params: { locale: string; query?: string; messages: any; }) {
-  const {  locale: initialLocale = 'rus', query:initialQuery, messages } = params;
+  const {  locale, query:initialQuery, messages } = params;
+  let currentLocale = useLocale();
 
   const [users, setUsers] = useState<UserObject[]>([]);
   const [query, setQuery] = useState(initialQuery || "");
@@ -33,7 +35,7 @@ export default function AuthorsPage(params: { locale: string; query?: string; me
 
   return ( 
     <div>
-      <NextIntlClientProvider locale={initialLocale} messages={messages}>
+      <NextIntlClientProvider locale={currentLocale} messages={messages}>
         <SearchBar onSearch={(newQuery) => setQuery(newQuery)} />
       </NextIntlClientProvider>
       
