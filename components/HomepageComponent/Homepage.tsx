@@ -6,11 +6,10 @@ import ArticleCardsList from "../Article/ArticleCardsListComponent/ArticleCardsL
 import AuthorCardsList from "../Author/AuthorCardsListComponent/AuthorCardsList";
 
 //for internationalisation
-import {ReactNode} from 'react';
 import {getTranslations} from 'next-intl/server';
 import {Link} from '@/src/i18n/routing';
 
-export default async function Homepage(locale: any) {
+export default async function Homepage() {
   const top_articles = await fetchArticles("?limit=6");
   const top_users = await fetchUsers("?limit=6");
   const t = await getTranslations('HomePage');
@@ -55,23 +54,23 @@ export default async function Homepage(locale: any) {
         </div>
 
         <div className={styles.homepage__top_articles}>
-          <h1> Популярные произведения: </h1>
+          <h1> {t('popular_articles')} </h1>
           <hr />
           <ArticleCardsList articles={top_articles} />
           <div className={styles.homepage__read_more_shadow}>
             <Link href="/articles" className="read_more_button">
-              Узнать больше
+            {t('see_more')}
             </Link>
           </div>
         </div>
 
         <div className={styles.homepage__top_users}>
-          <h1> Популярные авторы </h1>
+          <h1> {t('popular_authors')} </h1>
           <hr />
           <AuthorCardsList users={top_users} />
           <div className={styles.homepage__read_more_shadow}>
             <Link href="/authors" className="read_more_button">
-              Узнать больше
+              {t('see_more')}
             </Link>
           </div>
         </div>

@@ -3,14 +3,16 @@ import { useState } from "react";
 import styles from "./SearchBar.module.scss";
 import Image from "next/image";
 
-export default function SearchBar({
-  onSearch,
-  header,
-}: {
+//for internationalisation
+import {useTranslations} from 'next-intl';
+
+interface SearchBarProps {
   onSearch: (query: string) => void;
-  header?: string;
-}) {
+}
+
+export default function SearchBar({ onSearch }: SearchBarProps) {
   const [input, setInput] = useState("");
+  const t = useTranslations('Authors');
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value;
@@ -22,7 +24,7 @@ export default function SearchBar({
     <form className={styles.search_bar}>
       <div className={styles.search_bar_wrapper}>
         <div className={styles.search_bar__header}>
-          <h1>{header}</h1>
+          <h1>{t('search')}</h1>
         </div>
         <div className={styles.search_bar__bar}>
           <Image

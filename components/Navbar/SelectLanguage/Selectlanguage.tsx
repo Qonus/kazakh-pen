@@ -33,10 +33,8 @@ export default function SelectLanguage() {
       variant="light"
        //onAction will trigger when you select an option in dropdown
       > 
-        <DropdownItem key="kaz"> <Link href="/kaz"> Қазақша </Link></DropdownItem>
-        <DropdownItem key="rus" className="text-danger" color="primary">
-        <Link href="/rus"> Русский </Link>
-        </DropdownItem>
+        <DropdownItem key="kaz"> <Link href="/kaz" locale="kaz"> Қазақша </Link> </DropdownItem>
+        <DropdownItem key="rus"> <Link href="/rus" locale="rus"> Русский </Link> </DropdownItem>
       </DropdownMenu>
     </Dropdown>
   );
