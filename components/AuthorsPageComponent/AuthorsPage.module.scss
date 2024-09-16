@@ -6,3 +6,11 @@
     }
     
 }
+
+.results_not_found_message {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    color: $foreground-color-5;
+    margin: 40px;
+}
