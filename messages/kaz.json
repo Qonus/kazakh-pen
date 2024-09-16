@@ -12,5 +12,10 @@
     "Authors":{
       "search": "Авторларды іздеу",
       "searchbar": "Іздеу"
+    },
+
+    "Articles":{
+      "search": "Мақалалар іздеу",
+      "searchbar": "Іздеу"
     }
 }

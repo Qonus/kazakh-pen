@@ -5,7 +5,9 @@ import styles from "./AuthorsPage.module.scss";
 import UserObject from "@/backend/objects/UserObject";
 import AuthorCardsList from "@/components/Author/AuthorCardsListComponent/AuthorCardsList";
 import { fetchUsers } from "@/backend/request/users";
-import { NextIntlClientProvider } from 'next-intl';
+
+
+import { NextIntlClientProvider, useTranslations } from 'next-intl';
 
 interface AuthorsPageProps {
   locale: string;
@@ -16,6 +18,7 @@ interface AuthorsPageProps {
 export default function AuthorsPage({ locale, query: initialQuery = "", messages }: AuthorsPageProps) {
   const [users, setUsers] = useState<UserObject[]>([]);
   const [query, setQuery] = useState(initialQuery);
+  const t = useTranslations('Authors');
 
   useEffect(() => {
     const fetchInitialData = async () => {
@@ -32,7 +35,7 @@ export default function AuthorsPage({ locale, query: initialQuery = "", messages
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <SearchBar onSearch={(newQuery) => setQuery(newQuery)} />
+      <SearchBar onSearch={(newQuery) => setQuery(newQuery)} header={t('search')}/>
       <div className={styles.results_wrapper}>
         {users.length ? (
           <AuthorCardsList users={users} />

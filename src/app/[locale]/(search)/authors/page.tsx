@@ -1,5 +1,6 @@
 import AuthorsPage from '@/components/AuthorsPageComponent/AuthorsPage';
 import { getMessages } from '@/lib/i18n';
+import { NextIntlClientProvider } from 'next-intl';
 
 export async function generateStaticParams() {
   return [
@@ -17,9 +18,12 @@ export default async function Page({ params }: { params: Params }) {
   const messages = await getMessages(locale);
 
   return (
-    <AuthorsPage 
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      <AuthorsPage 
       locale={locale} 
       messages={messages} 
     />
+    </NextIntlClientProvider>
+    
   );
 }

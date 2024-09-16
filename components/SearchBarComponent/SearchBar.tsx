@@ -8,9 +8,10 @@ import {useTranslations} from 'next-intl';
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
+  header: string;
 }
 
-export default function SearchBar({ onSearch }: SearchBarProps) {
+export default function SearchBar({ onSearch, header }: SearchBarProps) {
   const [input, setInput] = useState("");
   const t = useTranslations('Authors');
 
@@ -24,7 +25,7 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
     <form className={styles.search_bar}>
       <div className={styles.search_bar_wrapper}>
         <div className={styles.search_bar__header}>
-          <h1>{t('search')}</h1>
+          <h1>{header}</h1>
         </div>
         <div className={styles.search_bar__bar}>
           <Image

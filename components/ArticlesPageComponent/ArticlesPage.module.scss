@@ -1,0 +1,13 @@
+.results {
+    &_wrapper {
+        width: $wrapper-width;
+        margin: 0 auto;
+    }
+    
+    &__list {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+}

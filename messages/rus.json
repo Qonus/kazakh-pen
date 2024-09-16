@@ -12,5 +12,10 @@
     "Authors":{
       "search": "Поиск авторов",
       "searchbar": "Поиск"
+    },
+
+    "Articles":{
+      "search": "Поиск статей",
+      "searchbar": "Іздеу"
     }
 }
