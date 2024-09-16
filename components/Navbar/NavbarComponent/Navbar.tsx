@@ -1,7 +1,7 @@
-import Link from "next/link";
 import styles from "./Navbar.module.scss";
 import Image from "next/image";
-import SelectLanguage from "../SelectLanguage/Selectlanguage";
+import { Link } from "@/src/i18n/routing";
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 
 export default function Navbar() {
   return (
@@ -19,7 +19,7 @@ export default function Navbar() {
             <h3>Kazakh Pen</h3>
           </Link>
           <div className={styles.navbar__nav}>
-            <SelectLanguage />
+            <LanguageSwitcher></LanguageSwitcher>
             <Link href="/authors">
               <p>Авторы</p>
             </Link>
