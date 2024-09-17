@@ -1,5 +1,7 @@
 import styles from "./Navbar.module.scss";
 import Image from "next/image";
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
+import Link from "next/link";
 
 export default function Navbar() {
   return (
