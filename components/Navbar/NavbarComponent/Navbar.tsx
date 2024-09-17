@@ -1,7 +1,5 @@
 import styles from "./Navbar.module.scss";
 import Image from "next/image";
-import { Link } from "@/src/i18n/routing";
-import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 
 export default function Navbar() {
   return (

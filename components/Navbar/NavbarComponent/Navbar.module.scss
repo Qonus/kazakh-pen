@@ -38,6 +38,9 @@
     &__nav {
         display: flex;
         height: 100%;
+        p{
+            font-size: medium;
+        }
     }
 
     & a {
@@ -59,4 +62,14 @@
 .fake_navbar {
     height: 70px;
     width: 100%;
+}
+
+@media screen and (max-width: $mobile-width) {
+    .navbar{
+        &__nav{
+            p{
+                font-size: small;
+            }
+        }
+    }
 }

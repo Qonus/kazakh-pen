@@ -23,6 +23,7 @@ export default function Article({
     alt="article_image"
     width={800}
     height={400}
+    layout="responsive"
     />
     <div
     dangerouslySetInnerHTML={{

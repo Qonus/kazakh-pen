@@ -28,12 +28,20 @@
             &__header{
                 font-size: 40px;
                 font-weight: 600;
+                display: flex;
+                flex-shrink: 3;
+
+                &__mobile_image{
+                    object-fit: cover;
+                    width: 30px;
+                    height: 30px;
+                    display: none;
+                }
             }
         }
 
         &__image{
             object-fit: cover;
-            border-radius: 10px;
         }
     }
 
@@ -70,13 +78,14 @@
         text-align: center;
         display: flex;
         flex-direction: column;
-        gap: 40px;
+        gap: 5px;
     }
 
     &__read_more_shadow {
         display: flex;
         justify-content: center;
         align-items: flex-end;
+        margin-top: 20px;
     }
 }
 
@@ -84,6 +93,23 @@
     .homepage {
         &__about_us_section{
             flex-direction: column;
+        }
+
+        &__hero_section{
+            flex-direction: column;
+
+            &__text{
+                &__header{
+    
+                    &__mobile_image{
+                        display: block;
+                    }
+                }
+            }
+
+            &__image{
+                display: none;
+            }
         }
     }
 }

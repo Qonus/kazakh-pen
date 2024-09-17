@@ -35,6 +35,8 @@
         &__image {
             object-fit: cover;
             border-radius: 50%;
+            height: 200px;
+            width: 200px;
         }
     }
 
@@ -50,3 +52,26 @@
         }
     }
 }
+
+@media screen and (max-width: $mobile-width) {
+    .author_info{
+        gap:15px;
+        padding: 10px;
+
+        &__right{
+            gap:5px;
+            font-size: small;
+        }
+
+        &__left{
+            &__image{
+                width: 100px;
+                height: 100px;
+            }
+        }
+        &__text {
+            font-size: 12px;
+            color: $foreground-color-2;
+        }
+    }
+  }
