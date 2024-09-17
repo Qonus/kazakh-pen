@@ -5,13 +5,13 @@ import { useState, useRef, useEffect } from "react";
 import AuthorNumbers from "../AuthorNumbersComponent/AuthorNumbers";
 
 export default function AuthorInfo({
-  firstName = "Abai",
-  lastName = "Kunanbaev",
+  firstName = "",
+  lastName = "",
   pages = 0,
   likes = 0,
-  birthDate = "1999",
-  deathDate = "2000",
-  nationality = "Казак",
+  birthDate = "",
+  deathDate = "",
+  nationality = "",
   description = "",
   image = "/profile_picture_placeholder.png",
 }: {
