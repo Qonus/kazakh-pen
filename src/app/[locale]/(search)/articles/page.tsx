@@ -2,13 +2,6 @@ import ArticlesPage from '@/components/ArticlesPageComponent/ArticlesPage';
 import { getMessages } from '@/lib/i18n';
 import { NextIntlClientProvider } from 'next-intl';
 
-export async function generateStaticParams() {
-  return [
-    { locale: 'kaz' },
-    { locale: 'rus' },
-  ];
-}
-
 interface Params {
   locale: string;
 }
