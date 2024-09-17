@@ -1,5 +1,7 @@
 $min-wrapper-width: 400px;
-$wrapper-width: clamp($min-wrapper-width, 80%, 800px);
+$wrapper-width: min(95%, 800px);
+$mobile-width: 40rem;
+$tablet-width: 60rem;
 
 // COLORS
 $primary-color: #F3AF2B;
