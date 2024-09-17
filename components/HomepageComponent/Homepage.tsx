@@ -5,6 +5,7 @@ import { fetchUsers } from "@/backend/request/users";
 import ArticleCardsList from "../Article/ArticleCardsListComponent/ArticleCardsList";
 import AuthorCardsList from "../Author/AuthorCardsListComponent/AuthorCardsList";
 import Link from "next/link";
+import ClientProfile from "../ClientProfileComponent/ClientProfile";
 
 export default async function Homepage() {
   const top_articles = await fetchArticles("?limit=6");
@@ -13,6 +14,7 @@ export default async function Homepage() {
   return (
     <div className={styles.homepage}>
       <div className={styles.homepage_wrapper}>
+        <ClientProfile></ClientProfile>
         <div className={styles.homepage__hero_section}>
           <Image
             src="/pen-feather.svg"

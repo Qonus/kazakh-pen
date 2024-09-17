@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "../styles/globals.scss";
 import Navbar from "@/components/Navbar/NavbarComponent/Navbar";
 import Footer from "@/components/FooterComponent/Footer";
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 
 export const metadata: Metadata = {
   title: "Kazakh Pen",
@@ -18,9 +19,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <UserProvider>
         <Navbar />
         {children}
         <Footer />
+        </UserProvider>
+        
       </body>
     </html>
   );

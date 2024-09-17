@@ -26,9 +26,8 @@ export default function Navbar() {
             <Link href="/articles">
               <p>Статьи</p>
             </Link>
-            <Link href="/">
-              <p>Главная</p>
-            </Link>
+            <a href="/api/auth/login">Login</a>
+            <a href="/api/auth/logout">Logout</a>
           </div>
         </div>
       </div>
