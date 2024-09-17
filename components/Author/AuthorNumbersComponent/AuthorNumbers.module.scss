@@ -1,19 +1,19 @@
 .author_numbers {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 30px;
+    gap: 1em;
     font-size: 17px;
     color: $foreground-color-2;
 
     & > * {
         display: flex;
         align-items: center;
-        gap: 7px;
+        gap: 0.2em;
     }
+
     @media screen and (max-width: $mobile-width) {
-                gap: 4px;
-                font-size: smaller;
-                justify-content: space-around;
-                width: 70%;
-        }
-      }
+        gap: 4px;
+        font-size: smaller;
+        width: 70%;
+    }
+}

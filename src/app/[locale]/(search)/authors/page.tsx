@@ -1,4 +1,4 @@
-import AuthorsPage from "@/components/AuthorsPageComponent/AuthorsPage";
+import AuthorsPage from "@/components/Author/AuthorsPageComponent/AuthorsPage";
 import { getMessages } from "@/lib/i18n";
 import { NextIntlClientProvider } from "next-intl";
 

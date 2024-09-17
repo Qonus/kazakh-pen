@@ -2,7 +2,7 @@
     display: flex;
     gap: 30px;
     padding:20px;
-    width: max(80%, $min-wrapper-width);
+    width: 90%;
     margin: 0 auto;
 
     &__text {
@@ -21,7 +21,6 @@
 
     &__expanded {
         display: block;
-        -webkit-line-clamp: unset; // Removes the line clamp restriction
         overflow: visible;
     }
 

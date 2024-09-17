@@ -15,12 +15,6 @@
         width: 100%;
         height: auto;
         max-height: 400px;
-
-        @media screen and (max-width: $mobile-width) {
-            width: 100%; // Image will scale down as the container shrinks
-            max-width: 100%; // Ensure it never exceeds 100% width
-            min-width: 30rem;
-          }
     }
 }
 
