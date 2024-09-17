@@ -1,8 +1,7 @@
-import createNextIntlPlugin from 'next-intl/plugin';
+import createNextIntlPlugin from "next-intl/plugin";
 const withNextIntl = createNextIntlPlugin();
 /** @type {import('next').NextConfig} */
 import path from "path";
-
 
 const nextConfig = {
   images: {
@@ -13,7 +12,5 @@ const nextConfig = {
     prependData: `@import "main.scss";`,
   },
 };
-
-
 
 export default withNextIntl(nextConfig);
