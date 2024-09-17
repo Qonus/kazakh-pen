@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^3.5.0",
     "@nextui-org/dropdown": "^2.1.30",
     "@nextui-org/system": "^2.2.6",
     "@nextui-org/theme": "^2.2.10",
