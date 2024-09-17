@@ -4,8 +4,8 @@ import { NextIntlClientProvider } from 'next-intl';
 
 export async function generateStaticParams() {
   return [
-    { locale: 'kz' },
-    { locale: 'ru' },
+    { locale: 'kaz' },
+    { locale: 'rus' },
   ];
 }
 
