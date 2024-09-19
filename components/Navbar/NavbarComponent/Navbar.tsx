@@ -19,16 +19,24 @@ export default function Navbar() {
             <h3>Kazakh Pen</h3>
           </Link>
           <div className={styles.navbar__nav}>
-            <LanguageSwitcher></LanguageSwitcher>
-            <Link href="/authors">
-              <p>Авторы</p>
-            </Link>
-            <Link href="/articles">
-              <p>Статьи</p>
-            </Link>
-            <Link href="/">
-              <p>Главная</p>
-            </Link>
+            <li>
+              <LanguageSwitcher />
+            </li>
+            <li>
+              <Link href="/authors">
+                <p>Авторы</p>
+              </Link>
+            </li>
+            <li>
+              <Link href="/articles">
+                <p>Статьи</p>
+              </Link>
+            </li>
+            <li>
+              <Link href="/">
+                <p>Главная</p>
+              </Link>
+            </li>
           </div>
         </div>
       </div>
