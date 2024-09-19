@@ -8,7 +8,7 @@ export default function LanguageSwitcher() {
   const pathname = usePathname();
   const t = useTranslations();
 
-  const currentLocale = t.locale as "ru" | "kz";
+  const currentLocale = "ru" as "ru" | "kz";
 
   const languages = [
     { code: "kz", label: "Қазақ" },
