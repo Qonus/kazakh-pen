@@ -8,31 +8,11 @@ export default function LanguageSwitcher() {
   const pathname = usePathname();
   const t = useTranslations();
 
-  const currentLocale = "ru" as "ru" | "kz";
-
-  const languages = [
-    { code: "kz", label: "Қазақ" },
-    { code: "ru", label: "Русский" },
-  ];
-
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedLocale = e.target.value as "ru" | "kz";
-    router.replace(String(pathname), { locale: selectedLocale });
-  };
-
   return (
     <div className={styles.languageSwitcher}>
-      <select
-        onChange={handleChange}
-        value={currentLocale}
-        className={styles.languageSelect}
-      >
-        {languages.map((lang) => (
-          <option key={lang.code} value={lang.code}>
-            {lang.label}
-          </option>
-        ))}
-      </select>
+      <button onClick={() => router.replace(pathname, {locale:"kz"})}> Каз </button>
+      <button onClick={() => router.replace(pathname, {locale:"ru"})}> Рус </button>
     </div>
+    
   );
 }
