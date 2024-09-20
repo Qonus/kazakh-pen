@@ -1,14 +1,14 @@
 "use client";
 import { useRouter, usePathname } from "@/src/i18n/routing"; // Adjust based on your custom routing
 import { useTranslations } from "next-intl"; // Assuming you're using next-intl
-import styles from "./LanguageSwitcher.module.scss";
+import {styles} from "./LanguageSwitcher.module.scss";
+import { useState } from "react";
 
 export default function LanguageSwitcher() {
   const router = useRouter();
   const pathname = usePathname();
   const t = useTranslations();
-
-  const currentLocale = router.locale as "ru" | "kz";
+  const [currentLocale, setCurrentLocale] = useState("ru");
 
   const languages = [
     { code: "kz", label: "Қазақ" },
@@ -17,6 +17,7 @@ export default function LanguageSwitcher() {
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedLocale = e.target.value as "ru" | "kz";
+    setCurrentLocale(selectedLocale);
     router.replace(String(pathname), { locale: selectedLocale });
   };
 
