@@ -1,7 +1,7 @@
 "use client";
 import { useRouter, usePathname } from "@/src/i18n/routing"; // Adjust based on your custom routing
 import { useTranslations } from "next-intl"; // Assuming you're using next-intl
-import {styles} from "./LanguageSwitcher.module.scss";
+import styles from "./LanguageSwitcher.module.scss";
 import { useState } from "react";
 
 export default function LanguageSwitcher() {
